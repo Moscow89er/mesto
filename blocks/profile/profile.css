@@ -1,9 +1,9 @@
 .profile {
-    margin: auto;
+    margin: 2px auto auto;
     padding-top: 36px;
     max-width: 880px;
     min-height: 120px;
     display: grid;
-    grid-template-columns: 168px 294px 24px 1fr 150px;
+    grid-template-columns: 148px 314px 24px 1fr 150px;
     grid-template-rows: repeat(2, 1fr);
 }
