@@ -5,3 +5,12 @@
     line-height: 22px;
     grid-row: 2/3;
 }
+@media (max-width: 696px) {
+    .profile__subtitle {
+        margin: 16px auto 0;
+        grid-column: 1/4;
+        grid-row: 3/4;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

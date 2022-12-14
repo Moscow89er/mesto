@@ -1,6 +1,6 @@
 .page {
     margin: 0;
-    padding: 0;
+    padding: 0 20px 0;
     font-family: 'Inter', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -13,4 +13,9 @@
     width: 100%;
     min-width: 320px;
     box-sizing: border-box;
+}
+@media (max-width: 696px) {
+    .page {
+        padding: 0;
+    }
 }

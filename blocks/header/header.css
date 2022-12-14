@@ -6,3 +6,8 @@
     display: flex;
     border-bottom: 1px solid #545454;
 }
+@media (max-width: 696px) {
+    .header {
+        padding-top: 10px;
+    }
+}

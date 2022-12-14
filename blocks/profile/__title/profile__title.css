@@ -6,3 +6,12 @@
     line-height: 48px;
     grid-row: 1/2;
 }
+@media (max-width: 696px) {
+    .profile__title {
+        margin: auto auto -10px auto;
+        grid-column: 1/4;
+        grid-row: 2/3;
+        font-size: 27px;
+        line-height: 32px;
+    }
+}
