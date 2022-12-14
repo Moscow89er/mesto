@@ -15,7 +15,9 @@
             <img class="profile__avatar" src="./images/profile_kusto.jpg" alt="аватар">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__edit-button">
-                <img class="profile__pencil" src="./images/profile_pencil.svg" alt="кнопка редактирования">
+                <a class="profile__edit-link" href="#">
+                    <img class="profile__pencil" src="./images/profile_pencil.svg" alt="кнопка редактирования">
+                </a>
             </button>
             <p class="profile__subtitle">Исследователь океана</p>
             <button class="profile__add-button">
@@ -78,6 +80,21 @@
                 </div>
             </div>
         </section>
+        <section class="popup">
+            <div class="popup__container">
+                <div class="popup__body">
+                    <h3 class="popup__title">Редактировать профиль</h3>
+                    <p class="popup__subtitle">Жак-Ив Кусто</p>
+                    <p class="popup__subtitle">Исследователь океана</p>
+                    <button class="popup__button">
+                        <a class="popup__button-text">Сохранить</a>
+                    </button>
+                    <button class="popup__close-button">
+                        <img class="popup__close" src="./images/popup_close.svg" alt="кнопка закрыть">
+                    </button>
+                </div>
+            </section>
+        </div>
         <footer class="footer">
             <p class="footer__copyright">© 2022 Никита Хубаев</p>
         </footer>
