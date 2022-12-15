@@ -4,11 +4,21 @@
         right: -44px;
     background: none;
     border: none;
+    width: 32px;
+    height: 32px;
+    background-image: url(../../../images/popup_close.svg);
+}
+.popup__close-button:hover {
+    transition: 1s linear 0.05s;
+    opacity: 0.6;
+    cursor: pointer;
 }
 @media (max-width: 696px) {
     .popup__close-button {
         position: absolute;
         right: -6px;
         top: -36px;
+        width: 20px;
+        height: 20px;
     }
 }
