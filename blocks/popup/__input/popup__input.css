@@ -12,7 +12,13 @@
 }
 .popup__input::-webkit-input-placeholder {
     color: #000;
-  }
+}
+.popup__input::-moz-placeholder {
+    color: #000;
+}
+.popup__input::-ms-input-placeholder {
+    color: #000;
+}
 .popup__input:first-of-type {
     margin: 0 0 28px;
 }

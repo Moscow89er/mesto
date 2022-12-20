@@ -12,6 +12,6 @@
     transition: 1s linear 0.05s;
     cursor: pointer;
 }
-.element__like-button.active {
+.element__like-button_active {
     background-image: url(../../../images/element_heart-active.svg);
 }

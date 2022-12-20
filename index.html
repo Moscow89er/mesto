@@ -13,7 +13,7 @@
     <section class="profile">
         <img class="profile__avatar" src="./images/profile_kusto.jpg" alt="аватар">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
-        <button type="button" id="show-popup" class="profile__edit-button"></button>
+        <button type="button" class="profile__edit-button"></button>
         <p class="profile__subtitle">Исследователь океана</p>
         <button type="button" class="profile__add-button"></button>
     </section>
@@ -22,7 +22,7 @@
             <img class="element__image" src="./images/element_karachaevsk.jpg" alt="Карачаевск">
             <div class="element__group">
                 <h2 class="element__title">Карачаевск</h2>
-                <button type="button" id="like" class="element__like-button"></button>
+                <button type="button"  class="element__like-button"></button>
             </div>
         </div>
         <div class="element">
@@ -61,20 +61,18 @@
             </div>
         </div>
     </section>
-    <section class="popup">
-        <div class="popup__container">
-            <div class="popup__body">
-                <h3 class="popup__title">Редактировать профиль</h3>
-                <input type="text" placeholder="Жак-Ив Кусто" class="popup__input popup__input_type_user">
-                <input type="text" placeholder="Исследователь океана" class="popup__input popup__input_type_workstyle">
-                <button type="button" class="popup__save-button">Сохранить</button>
-                <button type="button" class="popup__close-button"></button>
-            </div>
-        </div>
-    </section>
     <footer class="footer">
         <p class="footer__copyright">© 2022 Никита Хубаев</p>
     </footer>
+    <section class="popup">
+        <div class="popup__body">
+            <h3 class="popup__title">Редактировать профиль</h3>
+            <input type="text" class="popup__input popup__input_type_user">
+            <input type="text" class="popup__input popup__input_type_workstyle">
+            <button type="button" class="popup__save-button">Сохранить</button>
+            <button type="button" class="popup__close-button"></button>
+        </div>
+    </section>
     <script src="./pages/index.js"></script>
 </body>
 </html>
