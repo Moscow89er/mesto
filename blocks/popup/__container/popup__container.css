@@ -1,6 +1,6 @@
-.popup__body {
-    margin: 195px auto;
-    max-width: 430px;
+.popup__container {
+    margin: 195px auto 0;
+    max-width: 358px;
     height: 262px;
     background: #fff;
     border-radius: 10px;
@@ -11,8 +11,8 @@
     flex-direction: column;
 }
 @media (max-width: 696px) {
-    .popup__body {
-        margin: 122px auto;
+    .popup__container {
+        margin: 122px auto 0;
         padding: 0;
         width: 282px;
         height: 322px;
