@@ -1,5 +1,5 @@
 .popup__container {
-    margin: 195px auto 0;
+    margin: auto;
     max-width: 358px;
     height: 262px;
     background: #fff;
@@ -12,7 +12,6 @@
 }
 @media (max-width: 696px) {
     .popup__container {
-        margin: 122px auto 0;
         padding: 0;
         width: 282px;
         height: 322px;
