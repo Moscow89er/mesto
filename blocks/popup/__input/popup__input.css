@@ -13,13 +13,16 @@
     flex-direction: column;
 }
 .popup__input::-webkit-input-placeholder {
-    color: #000;
+    color: #C4C4C4;
+    opacity: 1;
 }
 .popup__input::-moz-placeholder {
-    color: #000;
+    color: #C4C4C4;
+    opacity: 1;
 }
 .popup__input::-ms-input-placeholder {
-    color: #000;
+    color: #C4C4C4;
+    opacity: 1;
 }
 .popup__input:first-of-type {
     padding-bottom: 8px;

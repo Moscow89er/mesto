@@ -84,13 +84,24 @@
     <footer class="footer">
         <p class="footer__copyright">© 2022 Никита Хубаев</p>
     </footer>
-    <section class="popup">
+    <section class="popup popup_edit-form">
         <div class="popup__container">
             <h3 class="popup__title">Редактировать профиль</h3>
             <form name="form" class="popup__form">
                 <input type="text" name="user" class="popup__input popup__input_type_user">
                 <input type="text" name="workstyle" class="popup__input popup__input_type_workstyle">
                 <button type="submit" class="popup__save-button">Сохранить</button>
+            </form>
+            <button type="button" class="popup__close-button"></button>
+        </div>
+    </section>
+    <section class="popup popup_add-form">
+        <div class="popup__container">
+            <h3 class="popup__title">Новое место</h3>
+            <form name="form" class="popup__form">
+                <input type="text" name="user" placeholder="Название" class="popup__input popup__input_type_user">
+                <input type="text" name="workstyle" placeholder="Ссылка на картинку" class="popup__input popup__input_type_workstyle">
+                <button type="submit" class="popup__save-button">Создать</button>
             </form>
             <button type="button" class="popup__close-button"></button>
         </div>
