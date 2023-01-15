@@ -19,72 +19,22 @@
             <button type="button" class="profile__add-button"></button>
         </section>
         <section class="elements">
-            <div class="element">
+            <template id="element-template" class="element">
                 <div class="element__container">
                     <button type="button" class="element__trash-button"></button>
-                    <img class="element__image" src="./images/element_karachaevsk.jpg" alt="Карачаевск">
+                    <img class="element__image" src="" alt="изображение места">
+                    <div class="element__group">
+                        <h2 class="element__title"></h2>
+                        <button type="button" class="element__like-button"></button>
+                    </div>
                 </div>
-                <div class="element__group">
-                    <h2 class="element__title">Карачаевск</h2>
-                    <button type="button" class="element__like-button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <div class="element__container">
-                    <button type="button" class="element__trash-button"></button>
-                    <img class="element__image" src="./images/element_elbrus.jpg" alt="Эльбрус">
-                </div>
-                <div class="element__group">
-                    <h2 class="element__title">Гора Эльбрус</h2>
-                    <button type="button" class="element__like-button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <div class="element__container">
-                    <button type="button" class="element__trash-button"></button>
-                    <img class="element__image" src="./images/element_dombai.jpg" alt="Домбай">
-                </div>
-                <div class="element__group">
-                    <h2 class="element__title">Домбай</h2>
-                    <button type="button" class="element__like-button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <div class="element__container">
-                    <button type="button" class="element__trash-button"></button>
-                    <img class="element__image" src="./images/element_elbrus.jpg" alt="Эльбрус">
-                </div>
-                <div class="element__group">
-                    <h2 class="element__title">Гора Эльбрус</h2>
-                    <button type="button" class="element__like-button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <div class="element__container">
-                    <button type="button" class="element__trash-button"></button>
-                    <img class="element__image" src="./images/element_dombai.jpg" alt="Домбай">
-                </div>
-                <div class="element__group">
-                    <h2 class="element__title">Домбай</h2>
-                    <button type="button" class="element__like-button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <div class="element__container">
-                    <button type="button" class="element__trash-button"></button>
-                    <img class="element__image" src="./images/element_karachaevsk.jpg" alt="Карачаевск">
-                </div>
-                <div class="element__group">
-                    <h2 class="element__title">Карачаево-Ч...</h2>
-                    <button type="button" class="element__like-button"></button>
-                </div>
-            </div>
+            </template>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">© 2022 Никита Хубаев</p>
     </footer>
-    <section class="popup popup_edit-form">
+    <section class="popup popup__edit-form">
         <div class="popup__container">
             <h3 class="popup__title">Редактировать профиль</h3>
             <form name="form" class="popup__form">
@@ -95,7 +45,7 @@
             <button type="button" class="popup__close-button"></button>
         </div>
     </section>
-    <section class="popup popup_add-form">
+    <section class="popup popup__add-form">
         <div class="popup__container">
             <h3 class="popup__title">Новое место</h3>
             <form name="form" class="popup__form">

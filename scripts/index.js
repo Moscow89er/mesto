@@ -1,43 +1,83 @@
-let profile = document.querySelector('.profile');
-let profileTitle = profile.querySelector('.profile__title');
-let profileSubtitle = profile.querySelector('.profile__subtitle');
-let editButton = profile.querySelector('.profile__edit-button');
-let addButton = profile.querySelector('.profile__add-button');
-let popup = document.querySelector('.popup');
-let popupAddForm = document.querySelector('.popup_add-form');
-let popupEditForm = document.querySelector('.popup_edit-form');
-let workstyle = popup.querySelector('.popup__input_type_workstyle');
-let user = popup.querySelector('.popup__input_type_user');
-let closeButton = popup.querySelector('.popup__close-button');
-let form = popup.querySelector('.popup__form');
-let closeButtons = document.querySelectorAll('.popup__close-button');
+const profile = document.querySelector('.profile');
+const profileTitle = profile.querySelector('.profile__title');
+const profileSubtitle = profile.querySelector('.profile__subtitle');
+const editButton = profile.querySelector('.profile__edit-button');
+const addButton = profile.querySelector('.profile__add-button');
+const popup = document.querySelector('.popup');
+const popupAddForm = document.querySelector('.popup__add-form');
+const popupEditForm = document.querySelector('.popup__edit-form');
+const workstyle = popup.querySelector('.popup__input_type_workstyle');
+const user = popup.querySelector('.popup__input_type_user');
+const closeButton = popup.querySelector('.popup__close-button');
+const form = popup.querySelector('.popup__form');
+const closeButtons = document.querySelectorAll('.popup__close-button');
+
+const elements = document.querySelector('.elements');
 
 //функция открытия попапов
 function showPopupEditForm() {
     user.value = profileTitle.textContent;
     workstyle.value = profileSubtitle.textContent;
     popupEditForm.classList.add('popup_opened');
-    };
-    function showPopupAddForm() {
+};
+function showPopupAddForm() {
     popupAddForm.classList.add('popup_opened');
-    };
-    editButton.addEventListener('click', showPopupEditForm);
-    addButton.addEventListener('click', showPopupAddForm);
+};
+editButton.addEventListener('click', showPopupEditForm);
+addButton.addEventListener('click', showPopupAddForm);
     
-    //функция закрытия попапов
-    function closePopup(popup) {
+//функция закрытия попапов
+function closePopup(popup) {
     popup.classList.remove('popup_opened');
-    };
-    closeButtons.forEach((button) => {
+};
+closeButtons.forEach((button) => {
     const popup = button.closest('.popup');
     button.addEventListener('click', () => closePopup(popup));
-    });
+});
     
-    //функция сохранения формы
-    function saveForm(evt) {
+//функция сохранения формы
+function saveForm(evt) {
     closePopup(popup);
     evt.preventDefault();
     profileTitle.textContent = user.value;
     profileSubtitle.textContent = workstyle.value;
-    };
-    form.addEventListener('submit', saveForm);
+};
+form.addEventListener('submit', saveForm);
+
+//стартовое положение карточек на странице
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+initialCards.forEach(function (card) {
+    const cardTemplate = document.querySelector('#element-template').content;
+    const cardElement = cardTemplate.cloneNode(true);
+
+    cardElement.querySelector('.element__image').src = card.link;
+    cardElement.querySelector('.element__title').textContent = card.name;
+
+    elements.append(cardElement);
+});
