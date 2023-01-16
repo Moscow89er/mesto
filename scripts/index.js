@@ -8,11 +8,14 @@ const popupAddForm = document.querySelector('.popup__add-form');
 const popupEditForm = document.querySelector('.popup__edit-form');
 const workstyle = popup.querySelector('.popup__input_type_workstyle');
 const user = popup.querySelector('.popup__input_type_user');
-const closeButton = popup.querySelector('.popup__close-button');
+
 const form = popup.querySelector('.popup__form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
 
 const elements = document.querySelector('.elements');
+
+const closeButton = document.querySelector('.popup__close-button');
+const addForm = document.querySelector('.popup__add-form');
 
 //функция открытия попапов
 function showPopupEditForm() {
@@ -34,7 +37,9 @@ closeButtons.forEach((button) => {
     const popup = button.closest('.popup');
     button.addEventListener('click', () => closePopup(popup));
 });
-    
+
+
+
 //функция сохранения формы
 function saveForm(evt) {
     closePopup(popup);
@@ -72,12 +77,38 @@ const initialCards = [
   }
 ];
 
-initialCards.forEach(function (card) {
+initialCards.forEach(function (element) {
     const cardTemplate = document.querySelector('#element-template').content;
     const cardElement = cardTemplate.cloneNode(true);
 
-    cardElement.querySelector('.element__image').src = card.link;
-    cardElement.querySelector('.element__title').textContent = card.name;
+    cardElement.querySelector('.element__image').src = element.link;
+    cardElement.querySelector('.element__title').alt = element.name;
+    cardElement.querySelector('.element__title').textContent = element.name;
 
     elements.append(cardElement);
 });
+
+//функция добавления карточек
+
+function saveAddForm(evt) {
+  evt.preventDefault();
+  addCard();
+  closePopup(addForm);
+}
+addForm.addEventListener('submit', saveAddForm);
+
+console.log(saveAddForm);
+
+function addCard () {
+  const cardTemplate = document.querySelector('#element-template').content;
+  const cardElement = cardTemplate.cloneNode(true);
+  const elementTitle = cardElement.querySelector('.element__title');
+  const elementImage = cardElement.querySelector('.element__image');
+
+  initialCards.forEach(function (element) {
+    elementTitle.textContent = element.name;
+    elementImage.src = element.link;
+
+    elements.prepend(cardElement);
+  });
+};
