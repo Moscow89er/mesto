@@ -17,6 +17,10 @@ const elements = document.querySelector('.elements');
 const closeButton = document.querySelector('.popup__close-button');
 const addForm = document.querySelector('.popup__add-form');
 
+
+const nameCard = document.querySelector('.popup__input_type_namecard');
+const linkCard = document.querySelector('.popup__input_type_linkcard');
+
 //функция открытия попапов
 function showPopupEditForm() {
     user.value = profileTitle.textContent;
