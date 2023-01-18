@@ -18,9 +18,6 @@ const closeButton = document.querySelector('.popup__close-button');
 const addForm = document.querySelector('.popup__add-form');
 
 
-const nameCard = document.querySelector('.popup__input_type_namecard');
-const linkCard = document.querySelector('.popup__input_type_linkcard');
-
 //функция открытия попапов
 function showPopupEditForm() {
     user.value = profileTitle.textContent;
@@ -41,8 +38,6 @@ closeButtons.forEach((button) => {
     const popup = button.closest('.popup');
     button.addEventListener('click', () => closePopup(popup));
 });
-
-
 
 //функция сохранения формы
 function saveForm(evt) {
@@ -89,8 +84,23 @@ initialCards.forEach(function (element) {
     cardElement.querySelector('.element__title').alt = element.name;
     cardElement.querySelector('.element__title').textContent = element.name;
 
+    const deleteCardButton = cardElement.querySelector('.element__delete-button');
+    deleteCardButton.addEventListener('click', deleteCard);
+
+    const likeCardButton = cardElement.querySelector('.element__like-button');
+    likeCardButton.addEventListener('click', likeCard);
+
     elements.append(cardElement);
 });
+
+function deleteCard (evt) {
+  evt.currentTarget.closest('.element__container').remove();
+  evt.stopPropagation;
+};
+
+function likeCard (evt) {
+  evt.target.classList.toggle('element__like-button_active');
+};
 
 //функция добавления карточек
 
@@ -98,21 +108,24 @@ function saveAddForm(evt) {
   evt.preventDefault();
   addCard();
   closePopup(addForm);
-}
+};
 addForm.addEventListener('submit', saveAddForm);
-
-console.log(saveAddForm);
 
 function addCard () {
   const cardTemplate = document.querySelector('#element-template').content;
   const cardElement = cardTemplate.cloneNode(true);
-  const elementTitle = cardElement.querySelector('.element__title');
-  const elementImage = cardElement.querySelector('.element__image');
 
-  initialCards.forEach(function (element) {
-    elementTitle.textContent = element.name;
-    elementImage.src = element.link;
+  const nameCard = document.querySelector('.popup__input_type_namecard');
+  const linkCard = document.querySelector('.popup__input_type_linkcard');
 
-    elements.prepend(cardElement);
-  });
+  elementTitle = cardElement.querySelector('.element__title').textContent = nameCard.value;
+  elementImage = cardElement.querySelector('.element__image').setAttribute('src', linkCard.value);
+
+  const deleteCardButton = cardElement.querySelector('.element__delete-button');
+  deleteCardButton.addEventListener('click', deleteCard);
+
+  const likeCardButton = cardElement.querySelector('.element__like-button');
+  likeCardButton.addEventListener('click', likeCard);
+
+  elements.prepend(cardElement);
 };
