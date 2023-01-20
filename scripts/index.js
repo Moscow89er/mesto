@@ -14,7 +14,6 @@ const elements = document.querySelector('.elements');
 const popupPhoto = document.querySelector('.popup__photo');
 const popupImage = document.querySelector('.popup__image');
 const popupTitlePhoto = document.querySelector('.popup__title_photo');
-const elementContainer = document.querySelector('.element__container');
 const nameCard = document.querySelector('.popup__input_type_namecard');
 const linkCard = document.querySelector('.popup__input_type_linkcard');
 const cardTemplate = document.querySelector('#element-template').content;
@@ -99,7 +98,6 @@ initialCards.forEach(function (element) {
     const cardElement = cardTemplate.cloneNode(true);
 
     cardElement.querySelector('.element__image').src = element.link;
-    cardElement.querySelector('.element__title').alt = element.name;
     cardElement.querySelector('.element__title').textContent = element.name;
 
     const deleteCardButton = cardElement.querySelector('.element__delete-button');
