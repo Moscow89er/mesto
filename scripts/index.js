@@ -4,16 +4,16 @@ const profileSubtitle = profile.querySelector('.profile__subtitle');
 const editButton = profile.querySelector('.profile__edit-button');
 const addButton = profile.querySelector('.profile__add-button');
 const popup = document.querySelector('.popup');
-const popupAddForm = document.querySelector('.popup__add-form');
-const popupEditForm = document.querySelector('.popup__edit-form');
+const popupAddForm = document.querySelector('.popup_add_form');
+const popupEditForm = document.querySelector('.popup_edit_form');
 const workstyle = popup.querySelector('.popup__input_type_workstyle');
 const user = popup.querySelector('.popup__input_type_user');
 const form = popup.querySelector('.popup__form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const elements = document.querySelector('.elements');
-const popupPhoto = document.querySelector('.popup__photo');
+const popupPhoto = document.querySelector('.popup_photo');
 const popupImage = document.querySelector('.popup__image');
-const popupTitlePhoto = document.querySelector('.popup__title_photo');
+const popupTitlePhoto = document.querySelector('.popup__title-photo');
 const nameCard = document.querySelector('.popup__input_type_namecard');
 const linkCard = document.querySelector('.popup__input_type_linkcard');
 const cardTemplate = document.querySelector('#element-template').content;
@@ -45,7 +45,7 @@ const initialCards = [
   }
 ];
 
-function showPopupEditForm() {
+function showPopupEditForm () {
     user.value = profileTitle.textContent;
     workstyle.value = profileSubtitle.textContent;
     popupEditForm.classList.add('popup_opened');
@@ -94,7 +94,7 @@ function showPopupImage (evt) {
   popupTitlePhoto.textContent = evt.target.closest('.element__container').textContent;
 };
 
-initialCards.forEach(function (element) {
+initialCards.forEach (function (element) {
     const cardElement = cardTemplate.cloneNode(true);
 
     cardElement.querySelector('.element__image').src = element.link;
