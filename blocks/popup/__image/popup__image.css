@@ -1,3 +1,39 @@
 .popup__image {
-    width: 100%;
+    margin: auto;
+    width: auto;
+    max-height: 540px;
+    object-fit: cover;
+}
+@media (max-width: 1020px) {
+    .popup__image {
+        max-height: 460px;
+    }
+}
+@media (max-width: 908px) {
+    .popup__image {
+        max-height: 400px;
+    }
+}
+@media (max-width: 710px) {
+    .popup__image {
+        max-height: 360px;
+    }
+}
+@media (max-width: 580px) {
+    .popup__image {
+        max-width: 560px;
+        min-height: 300px;
+    }
+}
+@media (max-width: 480px) {
+    .popup__image {
+        max-width: 400px;
+        min-height: 300px;
+    }
+}
+@media (max-width: 420px) {
+    .popup__image {
+        max-width: 300px;
+        min-height: 300px;
+    }
 }
