@@ -45,14 +45,8 @@ const initialCards = [
   }
 ];
 
-function showPopupEditForm () {
-    user.value = profileTitle.textContent;
-    workstyle.value = profileSubtitle.textContent;
-    popupEditForm.classList.add('popup_opened');
-};
-
-function showPopupAddForm () {
-    popupAddForm.classList.add('popup_opened');
+function showPopup (element) {
+  element.classList.add('popup_opened');
 };
 
 function closePopup (element) {
@@ -88,12 +82,6 @@ function saveAddForm (evt) {
   linkCard.value = '';
 };
 
-function showPopupImage (evt) {
-  popupPhoto.classList.add('popup_opened');
-  popupImage.src = evt.target.src;
-  popupTitlePhoto.textContent = evt.target.closest('.element__container').textContent;
-};
-
 initialCards.forEach (function (element) {
     const cardElement = cardTemplate.cloneNode(true);
 
@@ -107,7 +95,11 @@ initialCards.forEach (function (element) {
     likeCardButton.addEventListener('click', likeCard);
 
     const elementImageClick = cardElement.querySelector('.element__image');
-    elementImageClick.addEventListener('click', showPopupImage);
+    elementImageClick.addEventListener('click', function (evt) {
+      showPopup(popupPhoto);
+      popupImage.src = evt.target.src;
+      popupTitlePhoto.textContent = evt.target.closest('.element__container').textContent;
+    });
 
     elements.append(cardElement);
 });
@@ -125,12 +117,20 @@ function addCard () {
   likeCardButton.addEventListener('click', likeCard);
 
   const elementImageClick = cardElement.querySelector('.element__image');
-  elementImageClick.addEventListener('click', showPopupImage);
+  elementImageClick.addEventListener('click', function (evt) {
+    showPopup(popupPhoto);
+    popupImage.src = evt.target.src;
+    popupTitlePhoto.textContent = evt.target.closest('.element__container').textContent;
+  });
 
   elements.prepend(cardElement);
 };
 
-editButton.addEventListener('click', showPopupEditForm);
-addButton.addEventListener('click', showPopupAddForm);
+editButton.addEventListener('click', function () {
+  user.value = profileTitle.textContent;
+  workstyle.value = profileSubtitle.textContent;
+  showPopup(popupEditForm);
+});
+addButton.addEventListener('click', () => {showPopup(popupAddForm)});
 form.addEventListener('submit', saveForm);
 popupAddForm.addEventListener('submit', saveAddForm);
