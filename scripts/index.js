@@ -16,6 +16,7 @@ const popupImage = document.querySelector('.popup__image');
 const popupTitlePhoto = document.querySelector('.popup__title-photo');
 const nameCard = document.querySelector('.popup__input_type_namecard');
 const linkCard = document.querySelector('.popup__input_type_linkcard');
+const cardTemplate = document.querySelector('#element-template').content;
 
 
 function showPopup (element) {
@@ -32,7 +33,7 @@ closeButtons.forEach ((button) => {
 });
 
 function saveForm (evt) {
-    closePopup(popup);
+    closePopup(popupEditForm);
     evt.preventDefault();
     profileTitle.textContent = user.value;
     profileSubtitle.textContent = workstyle.value;
@@ -55,13 +56,11 @@ function saveAddForm (evt) {
   linkCard.value = '';
 };
 
-const cardTemplate = document.querySelector('#element-template').content;
-
 function addCard (name, link) {
   const cardElement = cardTemplate.cloneNode(true);
 
   cardElement.querySelector('.element__title').textContent = name;
-  /*cardElement.querySelector('.element__image').setAttribute('alt', name);*/
+  cardElement.querySelector('.element__image').alt = name;
   cardElement.querySelector('.element__image').src = link;
 
   const deleteCardButton = cardElement.querySelector('.element__delete-button');
@@ -89,6 +88,7 @@ editButton.addEventListener('click', function () {
   workstyle.value = profileSubtitle.textContent;
   showPopup(popupEditForm);
 });
+
 addButton.addEventListener('click', () => {showPopup(popupAddForm)});
 form.addEventListener('submit', saveForm);
 popupAddForm.addEventListener('submit', saveAddForm);
