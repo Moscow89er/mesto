@@ -11,9 +11,9 @@ const inputTypeUsername = popup.querySelector('.popup__input_type_username');
 const popupForm = popup.querySelector('.popup__form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const elements = document.querySelector('.elements');
-const popupZoomImage = document.querySelector('.popup_zoom_image');
+const popupPicture = document.querySelector('.popup_picture');
 const popupImage = document.querySelector('.popup__image');
-const popupTitleZoomImage = document.querySelector('.popup__title-zoom_image');
+const popupTitlePicture = document.querySelector('.popup__title_picture');
 const inputTypeNamecard = document.querySelector('.popup__input_type_namecard');
 const inputTypeLinkcard = document.querySelector('.popup__input_type_linkcard');
 const elementTemplate = document.querySelector('#element-template').content;
@@ -83,9 +83,9 @@ function createCard (name, link) {
 
   const elementImage = cardElement.querySelector('.element__image');
   elementImage.addEventListener('click', function (evt) {
-    openPopup(popupZoomImage);
+    openPopup(popupPicture);
     popupImage.src = evt.target.src;
-    popupTitleZoomImage.textContent = evt.target.closest('.element__container').textContent;
+    popupTitlePicture.textContent = evt.target.closest('.element__container').textContent;
   });
 
   return cardElement;
