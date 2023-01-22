@@ -16,7 +16,7 @@ const popupImage = document.querySelector('.popup__image');
 const popupTitlePhoto = document.querySelector('.popup__title-photo');
 const nameCard = document.querySelector('.popup__input_type_namecard');
 const linkCard = document.querySelector('.popup__input_type_linkcard');
-const cardTemplate = document.querySelector('#element-template').content;
+
 
 function showPopup (element) {
   element.classList.add('popup_opened');
@@ -49,56 +49,40 @@ function likeCard (evt) {
 
 function saveAddForm (evt) {
   evt.preventDefault();
-  addCard();
+  elements.prepend(addCard(nameCard.value, linkCard.value));
   closePopup(popupAddForm);
   nameCard.value = '';
   linkCard.value = '';
 };
 
-initialCards.forEach (function (element) {
-    const cardElement = cardTemplate.cloneNode(true);
+const cardTemplate = document.querySelector('#element-template').content;
 
-    cardElement.querySelector('.element__image').src = element.link;
-    cardElement.querySelector('.element__title').textContent = element.name;
+function addCard (name, link) {
+  const cardElement = cardTemplate.cloneNode(true);
 
-    const deleteCardButton = cardElement.querySelector('.element__delete-button');
-    deleteCardButton.addEventListener('click', deleteCard);
+  cardElement.querySelector('.element__title').textContent = name;
+  /*cardElement.querySelector('.element__image').setAttribute('alt', name);*/
+  cardElement.querySelector('.element__image').src = link;
 
-    const likeCardButton = cardElement.querySelector('.element__like-button');
-    likeCardButton.addEventListener('click', likeCard);
-
-    const elementImageClick = cardElement.querySelector('.element__image');
-    elementImageClick.addEventListener('click', function (evt) {
-      showPopup(popupPhoto);
-      popupImage.src = evt.target.src;
-      popupTitlePhoto.textContent = evt.target.closest('.element__container').textContent;
-    });
-
-    elements.append(cardElement);
-    elements.prepend(cardElement);
-});
-
-function addCard () {
-  elementTitle = document.querySelector('.element__title').textContent = nameCard.value;
-  elementImage = document.querySelector('.element__image').setAttribute('src', linkCard.value);
-
-  console.log(document.querySelector('.element__title').textContent = nameCard.value);
-
-  const deleteCardButton = document.querySelector('.element__delete-button');
+  const deleteCardButton = cardElement.querySelector('.element__delete-button');
   deleteCardButton.addEventListener('click', deleteCard);
 
-  const likeCardButton = document.querySelector('.element__like-button');
+  const likeCardButton = cardElement.querySelector('.element__like-button');
   likeCardButton.addEventListener('click', likeCard);
 
-  const elementImageClick = document.querySelector('.element__image');
+  const elementImageClick = cardElement.querySelector('.element__image');
   elementImageClick.addEventListener('click', function (evt) {
     showPopup(popupPhoto);
     popupImage.src = evt.target.src;
     popupTitlePhoto.textContent = evt.target.closest('.element__container').textContent;
   });
 
-  return;
+  return cardElement;
 };
+
+initialCards.forEach ((element) => {
+  elements.append(addCard(element.name, element.link));
+});
 
 editButton.addEventListener('click', function () {
   user.value = profileTitle.textContent;
