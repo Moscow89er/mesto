@@ -18,33 +18,6 @@ const nameCard = document.querySelector('.popup__input_type_namecard');
 const linkCard = document.querySelector('.popup__input_type_linkcard');
 const cardTemplate = document.querySelector('#element-template').content;
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 function showPopup (element) {
   element.classList.add('popup_opened');
 };
@@ -102,28 +75,29 @@ initialCards.forEach (function (element) {
     });
 
     elements.append(cardElement);
+    elements.prepend(cardElement);
 });
 
 function addCard () {
-  const cardElement = cardTemplate.cloneNode(true);
+  elementTitle = document.querySelector('.element__title').textContent = nameCard.value;
+  elementImage = document.querySelector('.element__image').setAttribute('src', linkCard.value);
 
-  elementTitle = cardElement.querySelector('.element__title').textContent = nameCard.value;
-  elementImage = cardElement.querySelector('.element__image').setAttribute('src', linkCard.value);
+  console.log(document.querySelector('.element__title').textContent = nameCard.value);
 
-  const deleteCardButton = cardElement.querySelector('.element__delete-button');
+  const deleteCardButton = document.querySelector('.element__delete-button');
   deleteCardButton.addEventListener('click', deleteCard);
 
-  const likeCardButton = cardElement.querySelector('.element__like-button');
+  const likeCardButton = document.querySelector('.element__like-button');
   likeCardButton.addEventListener('click', likeCard);
 
-  const elementImageClick = cardElement.querySelector('.element__image');
+  const elementImageClick = document.querySelector('.element__image');
   elementImageClick.addEventListener('click', function (evt) {
     showPopup(popupPhoto);
     popupImage.src = evt.target.src;
     popupTitlePhoto.textContent = evt.target.closest('.element__container').textContent;
   });
 
-  elements.prepend(cardElement);
+  return;
 };
 
 editButton.addEventListener('click', function () {
