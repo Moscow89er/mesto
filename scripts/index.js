@@ -44,7 +44,7 @@ function saveAddForm (evt) {
   evt.preventDefault();
   elements.prepend(createCard(inputTypeNamecard.value, inputTypeLinkcard.value));
   closePopup(popupAddForm);
-  document.getElementById('form').reset();
+  document.querySelector('.popup__form-add').reset();
 };
 popupAddForm.addEventListener('submit', saveAddForm);
 function deleteCard (evt) {
