@@ -17,6 +17,7 @@ const popupTitlePicture = document.querySelector('.popup__title-picture');
 const inputTypeNamecard = document.querySelector('.popup__input_type_namecard');
 const inputTypeLinkcard = document.querySelector('.popup__input_type_linkcard');
 const elementTemplate = document.querySelector('#element-template').content;
+const addForm = document.forms.addform;
 function openPopup (element) {
   element.classList.add('popup_opened');
 };
@@ -29,7 +30,7 @@ buttonOpenAddCardForm.addEventListener('click', () => {openPopup(popupAddForm)})
 function closePopup (element) {
     element.classList.remove('popup_opened');
 };
-closeButtons.forEach ((button) => {
+closeButtons.forEach (button => {
     const element = button.closest('.popup');
     button.addEventListener('click', () => closePopup(element));
 });
@@ -44,7 +45,7 @@ function saveAddForm (evt) {
   evt.preventDefault();
   elements.prepend(createCard(inputTypeNamecard.value, inputTypeLinkcard.value));
   closePopup(popupAddForm);
-  document.querySelector('.popup__form-add').reset();
+  addForm.reset();
 };
 popupAddForm.addEventListener('submit', saveAddForm);
 function deleteCard (evt) {
@@ -73,6 +74,6 @@ function createCard (name, link) {
   });
   return cardElement;
 };
-initialCards.forEach ((element) => {
+initialCards.forEach (element => {
   elements.append(createCard(element.name, element.link));
 });
