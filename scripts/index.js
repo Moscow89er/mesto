@@ -17,7 +17,7 @@ const popupTitlePicture = document.querySelector('.popup__title-picture');
 const inputTypeNamecard = document.querySelector('.popup__input_type_namecard');
 const inputTypeLinkcard = document.querySelector('.popup__input_type_linkcard');
 const elementTemplate = document.querySelector('#element-template').content;
-const addForm = document.forms.addform;
+const addForm = document.forms.addForm;
 function openPopup (element) {
   element.classList.add('popup_opened');
 };
