@@ -1,0 +1,6 @@
+.popup__form-error {
+    display: none;
+}
+.popup__form-error_active {
+    display: inline;
+}

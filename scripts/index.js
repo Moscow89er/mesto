@@ -6,7 +6,7 @@ const buttonOpenAddCardForm = profile.querySelector('.profile__add-button');
 const popup = document.querySelector('.popup');
 const popupAddForm = document.querySelector('.popup_add_form');
 const popupEditForm = document.querySelector('.popup_edit_form');
-const inputTypeWorkstyle = popup.querySelector('.popup__input_type_workstyle');
+const inputTypeAbout = popup.querySelector('.popup__input_type_about');
 const inputTypeUsername = popup.querySelector('.popup__input_type_username');
 const popupEditProfileForm = popup.querySelector('.popup__form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
@@ -23,7 +23,7 @@ function openPopup (element) {
 };
 buttonOpenEditProfileForm.addEventListener('click', function () {
   inputTypeUsername.value = profileTitle.textContent;
-  inputTypeWorkstyle.value = profileSubtitle.textContent;
+  inputTypeAbout.value = profileSubtitle.textContent;
   openPopup(popupEditForm);
 });
 buttonOpenAddCardForm.addEventListener('click', () => {openPopup(popupAddForm)});
@@ -38,7 +38,7 @@ function saveEditForm (evt) {
     closePopup(popupEditForm);
     evt.preventDefault();
     profileTitle.textContent = inputTypeUsername.value;
-    profileSubtitle.textContent = inputTypeWorkstyle.value;
+    profileSubtitle.textContent = inputTypeAbout.value;
 };
 popupEditProfileForm.addEventListener('submit', saveEditForm);
 function saveAddForm (evt) {
@@ -77,3 +77,28 @@ function createCard (name, link) {
 initialCards.forEach (element => {
   elements.append(createCard(element.name, element.link));
 });
+
+
+const obj = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  errorClass: '.popup__form-error_active'
+};
+enableValidation(obj);
+
+function enableValidation ({ formSelector, inputSelector, submitButtonSelector, errorClass}) {
+  const forms = Array.from(document.querySelectorAll(formSelector));
+  forms.forEach(form => {
+    form.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+    });
+
+    const inputs = Array.from(form.querySelectorAll(inputSelector));
+    inputs.forEach(input => {
+      input.addEventListener('input', function (evt) {
+        console.log(input.validity);
+      });
+    });
+  });
+};
