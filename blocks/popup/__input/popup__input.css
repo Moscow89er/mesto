@@ -12,6 +12,9 @@
     display:  flex;
     flex-direction: column;
 }
+.popup__input_type_error {
+    border-bottom: 1px solid #FF0000;
+}
 .popup__input::-webkit-input-placeholder {
     color: #C4C4C4;
     opacity: 1;

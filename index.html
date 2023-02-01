@@ -38,10 +38,10 @@
         <div class="popup__container">
             <h3 class="popup__title">Редактировать профиль</h3>
             <form name="form" class="popup__form" novalidate>
-                <input type="text" name="username" class="popup__input popup__input_type_username" minlength="2" maxlength="40" required>
-                <span id="username-error" class="popup__form-error">сообщение об ошибке</span>
-                <input type="text" name="about" class="popup__input popup__input_type_about" minlength="2" maxlength="200" required>
-                <span id="about-error" class="popup__form-error">сообщение об ошибке</span>
+                <input id="username" type="text" name="username" class="popup__input popup__input_type_username" minlength="2" maxlength="40" required>
+                <span class="username-error popup__form-error"></span>
+                <input id="about" type="text" name="about" class="popup__input popup__input_type_about" minlength="2" maxlength="200" required>
+                <span class="about-error popup__form-error"></span>
                 <button type="submit" class="popup__save-button">Сохранить</button>
             </form>
             <button type="button" class="popup__close-button"></button>
@@ -51,10 +51,10 @@
         <div class="popup__container">
             <h3 class="popup__title">Новое место</h3>
             <form name="addForm" class="popup__form popup__form-add" novalidate>
-                <input type="text" name="cardname" placeholder="Название" class="popup__input popup__input_type_cardname" minlength="2" maxlength="30" required>
-                <span id="cardname-error" class="popup__form-error">сообщение об ошибке</span>
-                <input type="url" name="cardlink" placeholder="Ссылка на картинку" class="popup__input popup__input_type_cardlink" required>
-                <span id="cardlink-error" class="popup__form-error">сообщение об ошибке</span>
+                <input id="cardname" type="text" name="cardname" placeholder="Название" class="popup__input popup__input_type_cardname" minlength="2" maxlength="30" required>
+                <span class="cardname-error popup__form-error"></span>
+                <input id="cardlink" type="url" name="cardlink" placeholder="Ссылка на картинку" class="popup__input popup__input_type_cardlink" required>
+                <span class="cardlink-error popup__form-error"></span>
                 <button type="submit" class="popup__save-button">Создать</button>
             </form>
             <button type="button" class="popup__close-button"></button>
