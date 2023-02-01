@@ -1,6 +1,33 @@
 .popup__form-error {
     display: none;
+    width: 360px;
+    margin: 0;
+    padding-top: 5px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    border: none;
+    color: #FF0000;
+    border-top: 1px solid #FF0000;
+    background-color: transparent;
+    outline: none;
+    position: absolute;
+        top: 194px;
+    z-index: 2;
+}
+.popup__form-error:first-of-type {
+    top: 137px;
 }
 .popup__form-error_active {
     display: inline;
+}
+@media (max-width: 696px) {
+    .popup__form-error {
+        width: 240px;
+        top: 207px;
+        margin-left: 20px;
+    }
+    .popup__form-error:first-of-type {
+        top: 148px;
+    }
 }

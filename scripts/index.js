@@ -14,8 +14,8 @@ const elements = document.querySelector('.elements');
 const popupPicture = document.querySelector('.popup_picture');
 const popupImage = document.querySelector('.popup__image');
 const popupTitlePicture = document.querySelector('.popup__title-picture');
-const inputTypeNamecard = document.querySelector('.popup__input_type_namecard');
-const inputTypeLinkcard = document.querySelector('.popup__input_type_linkcard');
+const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
+const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
 const elementTemplate = document.querySelector('#element-template').content;
 const addForm = document.forms.addForm;
 function openPopup (element) {
@@ -43,7 +43,7 @@ function saveEditForm (evt) {
 popupEditProfileForm.addEventListener('submit', saveEditForm);
 function saveAddForm (evt) {
   evt.preventDefault();
-  elements.prepend(createCard(inputTypeNamecard.value, inputTypeLinkcard.value));
+  elements.prepend(createCard(inputTypeCardName.value, inputTypeCardLink.value));
   closePopup(popupAddForm);
   addForm.reset();
 };
@@ -88,16 +88,31 @@ const obj = {
 enableValidation(obj);
 
 function enableValidation ({ formSelector, inputSelector, submitButtonSelector, errorClass}) {
+  //действие запуска процесса наложения валидации (должна быть отдельная функция)
   const forms = Array.from(document.querySelectorAll(formSelector));
   forms.forEach(form => {
+    //прописать обработчик для каждой формы, чтобы она на не сабмитилась
     form.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
 
+    //действие наложения обработчиков на поля форм (должна быть отдельная функция)
     const inputs = Array.from(form.querySelectorAll(inputSelector));
     inputs.forEach(input => {
-      input.addEventListener('input', function (evt) {
-        console.log(input.validity);
+      input.addEventListener('input', function () {
+        //проверка валидности введенных данных (должна быть отдельная функция)
+        if (input.validity.valid) {
+          //написать функцию удаления errorPlace(скрыть ошибку)
+
+        } else {
+          //показать ошибку
+
+          //поиск ErrorPlace - должна быть отдельная функция
+          const inputName = input.getAttribute('name');
+          const errorPlace = document.getElementById(`${inputName}-error`);
+          errorPlace.textContent = input.validationMessage;
+          errorPlace.classList.add(errorClass);
+        }
       });
     });
   });
