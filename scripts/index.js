@@ -29,6 +29,7 @@ buttonOpenEditProfileForm.addEventListener('click', function () {
 buttonOpenAddCardForm.addEventListener('click', () => {openPopup(popupAddForm)});
 function closePopup (element) {
     element.classList.remove('popup_opened');
+    clearInputFields();
 };
 closeButtons.forEach (button => {
     const element = button.closest('.popup');
@@ -128,6 +129,19 @@ const toggleButtonState = (inputList, buttonElement) => {
     buttonElement.removeAttribute('disabled', 'disabled');
   }
 };
+
+const clearInputFields = () => {
+  const errorFormElements = document.querySelectorAll('.popup__form-error');
+  const inputList = document.querySelectorAll('.popup__input');
+
+  errorFormElements.forEach((errorElement) => {
+    errorElement.textContent = '';
+  });
+  inputList.forEach((inputElement) => {
+    inputElement.classList.remove('popup__input_type_error');
+  });
+  addForm.reset();
+}
 
 const enableValidation = () => {
   const formList = Array.from(document.querySelectorAll('.popup__form'));
