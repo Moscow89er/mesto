@@ -11,16 +11,18 @@
     text-align: center;
     border: none;
 }
-.popup__save-button:disabled {
+.popup__save-button_disabled {
     border: 1px solid rgba(0, 0, 0, 0.2);
     color: rgba(0, 0, 0, 0.2);
     background: transparent;
+    cursor: pointer;
 }
 .popup__save-button:hover {
     transition: 1s linear 0.05s;
     background: rgba(0, 0, 0, 0.8);
     cursor: pointer;
 }
+
 @media (max-width: 696px) {
     .popup__save-button {
         margin: 14px 22px 0;
