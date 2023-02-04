@@ -18,8 +18,8 @@
     cursor: pointer;
 }
 .popup__save-button:hover {
-    /*transition: 1s linear 0.05s;
-    background: rgba(0, 0, 0, 0.8);*/
+    transition: 1s linear 0.05s;
+    background: rgba(0, 0, 0, 0.8);
     cursor: pointer;
 }
 

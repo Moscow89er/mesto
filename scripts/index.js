@@ -20,6 +20,7 @@ const elementTemplate = document.querySelector('#element-template').content;
 const addForm = document.forms.addForm;
 function openPopup (element) {
   element.classList.add('popup_opened');
+  enableValidation();
 };
 buttonOpenEditProfileForm.addEventListener('click', function () {
   inputTypeUsername.value = profileTitle.textContent;
@@ -29,12 +30,44 @@ buttonOpenEditProfileForm.addEventListener('click', function () {
 buttonOpenAddCardForm.addEventListener('click', () => {openPopup(popupAddForm)});
 function closePopup (element) {
     element.classList.remove('popup_opened');
-    clearInputFields();
+    clearInputErrors();
 };
-closeButtons.forEach (button => {
+
+closeButtons.forEach ((button) => {
     const element = button.closest('.popup');
     button.addEventListener('click', () => closePopup(element));
+
+    //нужно вывести эти функции отдельно
+    
+
+    /*document.addEventListener('click', (evt) => {
+      if (evt.target === element) {
+        closePopup(element);
+        console.log('клик вне модального окна');
+      }
+    });*/
 });
+
+const popups = document.querySelectorAll('.popup');
+
+popups.forEach ((popup) => {
+  const element = popup.closest('.popup');
+  document.addEventListener('click', (evt) => {
+    if (evt.target === element) {
+      closePopup(element);
+      console.log('клик вне модального окна');
+    }
+  });
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      closePopup(element);
+      console.log('кнопка нажата');
+    }
+  });
+});
+
+
+
 function saveEditForm (evt) {
     closePopup(popupEditForm);
     evt.preventDefault();
@@ -130,7 +163,7 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 };
 
-const clearInputFields = () => {
+const clearInputErrors = () => {
   const errorFormElements = document.querySelectorAll('.popup__form-error');
   const inputList = document.querySelectorAll('.popup__input');
 
