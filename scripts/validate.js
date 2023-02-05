@@ -26,23 +26,23 @@ const objects = {
     }
   };
   const setEventListeners = (formSelector) => {
-    const inputList = Array.from(formSelector.querySelectorAll('.popup__input'));
+    const inputsList = Array.from(formSelector.querySelectorAll('.popup__input'));
     const submitButtonSelector = formSelector.querySelector('.popup__save-button');
-    toggleButtonState(inputList, submitButtonSelector);
-    inputList.forEach((inputSelector) => {
+    toggleButtonState(inputsList, submitButtonSelector);
+    inputsList.forEach((inputSelector) => {
       inputSelector.addEventListener('input', () => {
         isValid(formSelector, inputSelector);
-        toggleButtonState(inputList, submitButtonSelector);
+        toggleButtonState(inputsList, submitButtonSelector);
       });
     });
   };
-  const hasInvalidInput = (inputList) => {
-    return inputList.some((inputSelector) => {
+  const hasInvalidInput = (inputsList) => {
+    return inputsList.some((inputSelector) => {
       return !inputSelector.validity.valid;
     });
   };
-  const toggleButtonState = (inputList, submitButtonSelector) => {
-    if (hasInvalidInput(inputList)) {
+  const toggleButtonState = (inputsList, submitButtonSelector) => {
+    if (hasInvalidInput(inputsList)) {
       submitButtonSelector.classList.add('popup__save-button_disabled');
       submitButtonSelector.setAttribute('disabled', 'disabled');
     } else {
@@ -52,15 +52,15 @@ const objects = {
   };
   const clearInputErrors = () => {
     const errorFormElements = document.querySelectorAll('.popup__form-error');
-    const inputList = document.querySelectorAll('.popup__input');
+    const inputsList = document.querySelectorAll('.popup__input');
     errorFormElements.forEach((errorElement) => {
       errorElement.textContent = '';
     });
-    inputList.forEach((inputSelector) => {
+    inputsList.forEach((inputSelector) => {
       inputSelector.classList.remove('popup__input_type_error');
     });
     addForm.reset();
-  }
+  };
   const enableValidation = () => {
     const formList = Array.from(document.querySelectorAll('.popup__form'));
     formList.forEach((formSelector) => {
