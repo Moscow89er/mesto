@@ -21,7 +21,7 @@ const addForm = document.querySelector('.popup__form-add');
 const popups = document.querySelectorAll('.popup');
 const openPopup = (element) => {
   element.classList.add('popup_opened');
-  enableValidation();
+  enableValidation(validationConfig);
 };
 const saveEditForm = (evt) => {
     closePopup(popupEditForm);
@@ -72,7 +72,7 @@ buttonOpenEditProfileForm.addEventListener('click', function () {
 buttonOpenAddCardForm.addEventListener('click', () => {openPopup(popupAddForm)});
 function closePopup (element) {
     element.classList.remove('popup_opened');
-    clearInputErrors();
+    clearInputErrors(validationConfig);
 };
 closeButtons.forEach ((button) => {
     const element = button.closest('.popup');
