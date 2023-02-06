@@ -20,11 +20,11 @@ const elementTemplate = document.querySelector('#element-template').content;
 const addForm = document.querySelector('.popup__form-add');
 const popups = document.querySelectorAll('.popup');
 const openPopup = (element) => {
-  document.addEventListener('click', () => {
-    clickOutsideClosePopup();
+  document.addEventListener('click', (evt) => {
+    clickOutsideClosePopup(evt);
   });
-  document.addEventListener('keydown', () => {
-    clickEscapeClosePopup();
+  document.addEventListener('keydown', (evt) => {
+    clickEscapeClosePopup(evt);
   });
   element.classList.add('popup_opened');
 };
@@ -80,11 +80,11 @@ buttonOpenAddCardForm.addEventListener('click', () => {
   openPopup(popupAddForm);
 });
 const closePopup = (element) => {
-  document.removeEventListener('click', () => {
-    clickOutsideClosePopup();
+  document.removeEventListener('click', (evt) => {
+    clickOutsideClosePopup(evt);
   });
-  document.removeEventListener('keydown', () => {
-    clickEscapeClosePopup();
+  document.removeEventListener('keydown', (evt) => {
+    clickEscapeClosePopup(evt);
   });
   element.classList.remove('popup_opened');
 };
@@ -92,26 +92,20 @@ closeButtons.forEach ((button) => {
   const element = button.closest('.popup');
   button.addEventListener('click', () => closePopup(element));
 });
-
-const clickOutsideClosePopup = () => {
-  popups.forEach ((popup, evt) => {
-    const element = popup.closest('.popup');
-    console.log(evt.target);
-    document.addEventListener('click', (evt) => {
-      if (evt.target === element) {
-        closePopup(element);
-      }
-    });
-  });
-};
-const clickEscapeClosePopup = () => {
+const clickOutsideClosePopup = (evt) => {
   popups.forEach ((popup) => {
     const element = popup.closest('.popup');
-    document.addEventListener('keydown', (evt) => {
-      if (evt.key === 'Escape') {
-        closePopup(element);
-      }
-    });
+    if (evt.target === element) {
+      closePopup(element);
+    }
+  });
+};
+const clickEscapeClosePopup = (evt) => {
+  popups.forEach ((popup) => {
+    const element = popup.closest('.popup');
+    if (evt.key === 'Escape') {
+      closePopup(element);
+    }
   });
 };
 popupEditProfileForm.addEventListener('submit', saveEditForm);
