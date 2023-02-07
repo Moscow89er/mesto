@@ -20,7 +20,7 @@ const elementTemplate = document.querySelector('#element-template').content;
 const addForm = document.querySelector('.popup__form-add');
 const popups = document.querySelectorAll('.popup');
 const openPopup = (element) => {
-  document.addEventListener('click', (evt) => {
+  document.addEventListener('mousedown', (evt) => {
     clickOutsideClosePopup(evt);
   });
   document.addEventListener('keydown', (evt) => {

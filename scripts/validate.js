@@ -30,6 +30,12 @@ const setEventListeners = (formSelector, validationConfig) => {
   const inputsList = Array.from(formSelector.querySelectorAll(validationConfig.inputSelector));
   const submitButtonSelector = formSelector.querySelector(validationConfig.submitButtonSelector);
   toggleButtonState(inputsList, submitButtonSelector, validationConfig);
+  formSelector.addEventListener('reset', () => {
+    setTimeout(() => {
+      toggleButtonState(inputsList, submitButtonSelector, validationConfig);
+    }, 0);
+  });
+  toggleButtonState(inputsList, submitButtonSelector, validationConfig);
   inputsList.forEach((inputSelector) => {
     inputSelector.addEventListener('input', () => {
       isValid(formSelector, inputSelector);
@@ -37,9 +43,9 @@ const setEventListeners = (formSelector, validationConfig) => {
     });
   });
 };
-const hasInvalidInput = (element) => {
-  return element.some((item) => {
-    return !item.validity.valid;
+const hasInvalidInput = (inputsList) => {
+  return inputsList.some((inputSelector) => {
+    return !inputSelector.validity.valid;
   });
 };
 const toggleButtonState = (inputsList, submitButtonSelector, validationConfig) => {
@@ -54,21 +60,21 @@ const toggleButtonState = (inputsList, submitButtonSelector, validationConfig) =
 const clearInputErrors = (validationConfig) => {
   const errorFormElements = document.querySelectorAll(validationConfig.errorFormElement);
   const inputsList = document.querySelectorAll(validationConfig.inputSelector);
-  errorFormElements.forEach((item) => {
-    item.textContent = '';
+  errorFormElements.forEach((errorElement) => {
+    errorElement.textContent = '';
   });
-  inputsList.forEach((item) => {
-    item.classList.remove(validationConfig.inputErrorClass);
+  inputsList.forEach((inputSelector) => {
+    inputSelector.classList.remove(validationConfig.inputErrorClass);
   });
   addForm.reset();
 };
 const enableValidation = (validationConfig) => {
   const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
-  formList.forEach((item) => {
-    item.addEventListener('submit', function (evt) {
+  formList.forEach((formSelector) => {
+    formSelector.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
-    setEventListeners(item, validationConfig);
+    setEventListeners(formSelector, validationConfig);
   });
 };
 enableValidation(validationConfig);
