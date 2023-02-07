@@ -20,12 +20,8 @@ const elementTemplate = document.querySelector('#element-template').content;
 const addForm = document.querySelector('.popup__form-add');
 const popups = document.querySelectorAll('.popup');
 const openPopup = (element) => {
-  document.addEventListener('mousedown', (evt) => {
-    clickOutsideClosePopup(evt);
-  });
-  document.addEventListener('keydown', (evt) => {
-    clickEscapeClosePopup(evt);
-  });
+  document.addEventListener('mousedown', clickOutsideClosePopup);
+  document.addEventListener('keydown', clickEscapeClosePopup);
   element.classList.add('popup_opened');
 };
 const saveEditForm = (evt) => {
@@ -80,12 +76,8 @@ buttonOpenAddCardForm.addEventListener('click', () => {
   openPopup(popupAddForm);
 });
 const closePopup = (element) => {
-  document.removeEventListener('click', (evt) => {
-    clickOutsideClosePopup(evt);
-  });
-  document.removeEventListener('keydown', (evt) => {
-    clickEscapeClosePopup(evt);
-  });
+  document.removeEventListener('mousedown', clickOutsideClosePopup);
+  document.removeEventListener('keydown', clickEscapeClosePopup);
   element.classList.remove('popup_opened');
 };
 closeButtons.forEach ((button) => {
@@ -93,20 +85,16 @@ closeButtons.forEach ((button) => {
   button.addEventListener('click', () => closePopup(element));
 });
 const clickOutsideClosePopup = (evt) => {
-  popups.forEach ((popup) => {
-    const element = popup.closest('.popup');
-    if (evt.target === element) {
-      closePopup(element);
-    }
-  });
+  const popupOpened = document.querySelector('.popup_opened');
+  if (evt.target === popupOpened) {
+    closePopup(popupOpened);
+  }
 };
 const clickEscapeClosePopup = (evt) => {
-  popups.forEach ((popup) => {
-    const element = popup.closest('.popup');
-    if (evt.key === 'Escape') {
-      closePopup(element);
-    }
-  });
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
 };
 popupEditProfileForm.addEventListener('submit', saveEditForm);
 popupAddForm.addEventListener('submit', saveAddForm);
