@@ -1,4 +1,4 @@
-const validationConfig = {
+export const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save-button',
@@ -57,7 +57,7 @@ const toggleButtonState = (inputsList, submitButtonSelector, validationConfig) =
     submitButtonSelector.removeAttribute('disabled', 'disabled');
   }
 };
-const clearInputErrors = (validationConfig) => {
+export const clearInputErrors = (validationConfig) => {
   const errorFormElements = document.querySelectorAll(validationConfig.errorFormElement);
   const inputsList = document.querySelectorAll(validationConfig.inputSelector);
   errorFormElements.forEach((errorElement) => {
