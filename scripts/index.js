@@ -1,5 +1,5 @@
-import { clearInputErrors, validationConfig } from './validate.js';
-import { Card } from './card.js';
+import { Card } from './Card.js';
+import { FormValidator, validationConfig } from './FormValidator.js';
 
 const buttonOpenEditProfileForm = document.querySelector('.profile__edit-button');
 const buttonOpenAddCardForm = document.querySelector('.profile__add-button');
@@ -26,15 +26,12 @@ const saveEditForm = (evt) => {
     profileSubtitle.textContent = inputTypeAbout.value;
 };
 
-
-//Закончил рабоатать тут
 const saveAddForm = (evt) => {
   evt.preventDefault();
   const newCard = {
     name: inputTypeCardName.value,
     link: inputTypeCardLink.value
   };
-
   const card = new Card(newCard, '.element_type_default');
   elements.prepend(card.generateCard());
   closePopup(popupAddForm);
@@ -46,11 +43,11 @@ const saveAddForm = (evt) => {
 buttonOpenEditProfileForm.addEventListener('click', function () {
   inputTypeUsername.value = profileTitle.textContent;
   inputTypeAbout.value = profileSubtitle.textContent;
-  clearInputErrors(validationConfig);
+  FormValidator._clearInputErrors(validationConfig);
   openPopup(popupEditForm);
 });
 buttonOpenAddCardForm.addEventListener('click', () => {
-  clearInputErrors(validationConfig);
+  FormValidator._clearInputErrors(validationConfig);
   openPopup(popupAddForm);
 });
 const closePopup = (element) => {
@@ -76,6 +73,3 @@ const clickEscapeClosePopup = (evt) => {
 };
 popupEditProfileForm.addEventListener('submit', saveEditForm);
 popupAddForm.addEventListener('submit', saveAddForm);
-
-
-
