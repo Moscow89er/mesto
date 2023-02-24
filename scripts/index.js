@@ -43,11 +43,14 @@ const saveAddForm = (evt) => {
 buttonOpenEditProfileForm.addEventListener('click', function () {
   inputTypeUsername.value = profileTitle.textContent;
   inputTypeAbout.value = profileSubtitle.textContent;
-  FormValidator._clearInputErrors(validationConfig);
+  const formValidator = new FormValidator(validationConfig, '.popup__input');
+  formValidator._showInputError();
+  formValidator._clearInputErrors(validationConfig);
   openPopup(popupEditForm);
 });
 buttonOpenAddCardForm.addEventListener('click', () => {
-  FormValidator._clearInputErrors(validationConfig);
+  //const formValidator = new FormValidator;
+  //formValidator._clearInputErrors(validationConfig);
   openPopup(popupAddForm);
 });
 const closePopup = (element) => {
