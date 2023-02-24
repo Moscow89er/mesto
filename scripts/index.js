@@ -28,10 +28,15 @@ const saveEditForm = (evt) => {
 
 
 //Закончил рабоатать тут
-const saveAddForm = (/*evt,*/ item) => {
-  //evt.preventDefault();
-  const card = new Card(item, '.element_type_default') ;
-  elements.prepend(card.generateCard(inputTypeCardName.value, inputTypeCardLink.value));
+const saveAddForm = (evt) => {
+  evt.preventDefault();
+  const newCard = {
+    name: inputTypeCardName.value,
+    link: inputTypeCardLink.value
+  };
+
+  const card = new Card(newCard, '.element_type_default');
+  elements.prepend(card.generateCard());
   closePopup(popupAddForm);
   addForm.reset();
 };
