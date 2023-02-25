@@ -43,9 +43,9 @@ const saveAddForm = (evt) => {
 buttonOpenEditProfileForm.addEventListener('click', function () {
   inputTypeUsername.value = profileTitle.textContent;
   inputTypeAbout.value = profileSubtitle.textContent;
-  const formValidator = new FormValidator(validationConfig, '.popup__input');
-  formValidator._showInputError();
-  formValidator._clearInputErrors(validationConfig);
+  const formValidator = new FormValidator(validationConfig, '.popup__form-edit');
+  formValidator.enableValidation(validationConfig);
+  //formValidator._clearInputErrors(validationConfig);
   openPopup(popupEditForm);
 });
 buttonOpenAddCardForm.addEventListener('click', () => {
