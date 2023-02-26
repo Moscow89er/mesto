@@ -25,13 +25,13 @@ const initialCards = [
   }
 ];
 const validationConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-button',
+  selectorForm: '.popup__form',
+  selectorInput: '.popup__input',
+  buttonSelectorSubmit: '.popup__save-button',
   errorFormElement: '.popup__form-error',
-  inactiveButtonClass: 'popup__save-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__form-error_active',
+  buttonClassInactive: 'popup__save-button_disabled',
+  inputClassError: 'popup__input_type_error',
+  formClassError: 'popup__form-error_active',
 };
 const buttonOpenEditProfileForm = document.querySelector('.profile__edit-button');
 const buttonOpenAddCardForm = document.querySelector('.profile__add-button');
@@ -42,7 +42,7 @@ const inputTypeUsername = document.querySelector('.popup__input_type_username');
 const popupAddForm = document.querySelector('.popup_add_form');
 const popupEditForm = document.querySelector('.popup_edit_form');
 const popupEditProfileForm = document.querySelector('.popup__form');
-const closeButtons = document.querySelectorAll('.popup__close-button');
+const buttonTypeClose = document.querySelectorAll('.popup__close-button');
 const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
 const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
 const cardsContainer = document.querySelector('.cards');
@@ -58,7 +58,7 @@ export {
   popupAddForm,
   popupEditForm,
   popupEditProfileForm,
-  closeButtons,
+  buttonTypeClose,
   inputTypeCardName,
   inputTypeCardLink,
   cardsContainer

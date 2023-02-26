@@ -11,25 +11,25 @@ export class Card {
       return cardElement;
     };
     generateCard() {
-      this._element = this._getTemplate();
-      this._elementImage = this._element.querySelector('.card__image');
-      this._elementTitle = this._element.querySelector('.card__title');
-      this._deleteButton = this._element.querySelector('.card__delete-button');
-      this._likeButton = this._element.querySelector('.card__like-button');
+      this._card = this._getTemplate();
+      this._cardtImage = this._card.querySelector('.card__image');
+      this._cardTitle = this._card.querySelector('.card__title');
+      this._buttonDelete = this._card.querySelector('.card__delete-button');
+      this._buttonLike = this._card.querySelector('.card__like-button');
       this._setEventListeners();
-      this._elementTitle.textContent = this._name;
-      this._elementImage.alt = this._name;
-      this._elementImage.src = this._link;
-      return this._element;
+      this._cardTitle.textContent = this._name;
+      this._cardtImage.alt = this._name;
+      this._cardtImage.src = this._link;
+      return this._card;
     };
     _setEventListeners() {
-      this._likeButton.addEventListener('click', () => {
+      this._buttonLike.addEventListener('click', () => {
         this._likeCard();
       });
-      this._deleteButton.addEventListener('click', () => {
+      this._buttonDelete.addEventListener('click', () => {
         this._deleteCard();
       });
-      this._elementImage.addEventListener('click', () => {
+      this._cardtImage.addEventListener('click', () => {
         const popupPicture = document.querySelector('.popup_picture');
         const popupImage = document.querySelector('.popup__image');
         const popupTitlePicture = document.querySelector('.popup__title-picture');
@@ -40,10 +40,10 @@ export class Card {
       });
     };
     _likeCard() {
-      this._likeButton.classList.toggle('card__like-button_active');
+      this._buttonLike.classList.toggle('card__like-button_active');
     };
     _deleteCard() {
-      this._deleteButton.closest('.card__container').remove();
+      this._buttonDelete.closest('.card__container').remove();
     };
 };
 initialCards.forEach (newCard => {

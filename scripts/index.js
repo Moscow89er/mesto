@@ -9,7 +9,7 @@ import {
   popupAddForm,
   popupEditForm,
   popupEditProfileForm,
-  closeButtons,
+  buttonTypeClose,
   inputTypeCardName,
   inputTypeCardLink,
   cardsContainer
@@ -57,7 +57,7 @@ const closePopup = (popup) => {
   document.removeEventListener('keydown', clickEscapeClosePopup);
   popup.classList.remove('popup_opened');
 };
-closeButtons.forEach ((button) => {
+buttonTypeClose.forEach ((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
