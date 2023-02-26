@@ -49,7 +49,8 @@ buttonOpenEditProfileForm.addEventListener('click', function () {
   openPopup(popupEditForm);
 });
 buttonOpenAddCardForm.addEventListener('click', () => {
-  //const formValidator = new FormValidator;
+  const formValidator = new FormValidator(validationConfig, '.popup__form-add');
+  formValidator.enableValidation(validationConfig);
   //formValidator._clearInputErrors(validationConfig);
   openPopup(popupAddForm);
 });
