@@ -12,10 +12,10 @@ export class Card {
     };
     generateCard() {
       this._element = this._getTemplate();
-      this._elementImage = this._element.querySelector('.element__image');
-      this._elementTitle = this._element.querySelector('.element__title');
-      this._deleteButton = this._element.querySelector('.element__delete-button');
-      this._likeButton = this._element.querySelector('.element__like-button');
+      this._elementImage = this._element.querySelector('.card__image');
+      this._elementTitle = this._element.querySelector('.card__title');
+      this._deleteButton = this._element.querySelector('.card__delete-button');
+      this._likeButton = this._element.querySelector('.card__like-button');
       this._setEventListeners();
       this._elementTitle.textContent = this._name;
       this._elementImage.alt = this._name;
@@ -40,14 +40,14 @@ export class Card {
       });
     };
     _likeCard() {
-      this._likeButton.classList.toggle('element__like-button_active');
+      this._likeButton.classList.toggle('card__like-button_active');
     };
     _deleteCard() {
-      this._deleteButton.closest('.element__container').remove();
+      this._deleteButton.closest('.card__container').remove();
     };
 };
 initialCards.forEach (item => {
-    const card = new Card(item, '.element_type_default');
+    const card = new Card(item, '.card_type_default');
     const cardElement = card.generateCard();
     document.querySelector('.cards').append(cardElement);
 });

@@ -33,7 +33,7 @@ const saveAddForm = (evt) => {
     name: inputTypeCardName.value,
     link: inputTypeCardLink.value
   };
-  const card = new Card(newCard, '.element_type_default');
+  const card = new Card(newCard, '.card_type_default');
   cardsContainer.prepend(card.generateCard());
   closePopup(popupAddForm);
   addForm.reset();

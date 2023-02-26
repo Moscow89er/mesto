@@ -1,4 +1,4 @@
-.element__delete-button {
+.card__delete-button {
     position: absolute;
         top: 20px;
         right: 20px;
@@ -9,7 +9,7 @@
     background-color: transparent;
     background-image: url(../../../images/element_trash.svg);
 }
-.element__delete-button:hover {
+.card__delete-button:hover {
     opacity: 0.5;
     transition: 1s linear 0.05s;
     cursor: pointer;
