@@ -1,4 +1,4 @@
-.elements {
+.cards {
     max-width: 880px;
     margin: 52px auto 0;
     padding: 0 0 48px 0;
@@ -7,12 +7,12 @@
     gap: 20px 17px;
 }
 @media (max-width: 920px) {
-    .elements {
+    .cards {
         justify-content: center;
     }
 }
 @media (max-width: 696px) {
-    .elements {
+    .cards {
         margin: 36px auto 0;
         padding: 0;
     }

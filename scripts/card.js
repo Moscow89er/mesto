@@ -49,5 +49,5 @@ export class Card {
 initialCards.forEach (item => {
     const card = new Card(item, '.element_type_default');
     const cardElement = card.generateCard();
-    document.querySelector('.elements').append(cardElement);
+    document.querySelector('.cards').append(cardElement);
 });

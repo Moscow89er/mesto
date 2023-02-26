@@ -1,6 +1,6 @@
 export class FormValidator {
   constructor (config, form) {
-    this._formSelector = config.formSelector;
+    /*this._formSelector = config.formSelector;*/
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
     this._errorFormElement = config.errorFormElement;
@@ -59,7 +59,7 @@ export class FormValidator {
       submitButtonSelector.removeAttribute('disabled', 'disabled');
     }
   };
-  _clearInputErrors = () => {
+  clearInputErrors = () => {
     const errorFormElements = document.querySelectorAll(this._errorFormElement);
     const inputsList = document.querySelectorAll(this._inputSelector);
     errorFormElements.forEach((errorElement) => {

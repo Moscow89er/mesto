@@ -45,8 +45,7 @@ const popupEditProfileForm = document.querySelector('.popup__form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
 const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
-const elements = document.querySelector('.elements');
-
+const cardsContainer = document.querySelector('.cards');
 export { 
   initialCards,
   validationConfig,
@@ -62,5 +61,5 @@ export {
   closeButtons,
   inputTypeCardName,
   inputTypeCardLink,
-  elements
-}
+  cardsContainer
+};

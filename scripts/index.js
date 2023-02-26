@@ -12,7 +12,7 @@ import {
   closeButtons,
   inputTypeCardName,
   inputTypeCardLink,
-  elements
+  cardsContainer
 } from './constants.js';
 import { Card } from './Card.js';
 import { FormValidator} from './FormValidator.js';
@@ -34,7 +34,7 @@ const saveAddForm = (evt) => {
     link: inputTypeCardLink.value
   };
   const card = new Card(newCard, '.element_type_default');
-  elements.prepend(card.generateCard());
+  cardsContainer.prepend(card.generateCard());
   closePopup(popupAddForm);
   addForm.reset();
 };
@@ -43,13 +43,13 @@ buttonOpenEditProfileForm.addEventListener('click', function () {
   inputTypeAbout.value = profileSubtitle.textContent;
   const formValidator = new FormValidator(validationConfig, '.popup__form-edit');
   formValidator.enableValidation();
-  formValidator._clearInputErrors();
+  formValidator.clearInputErrors();
   openPopup(popupEditForm);
 });
 buttonOpenAddCardForm.addEventListener('click', () => {
   const formValidator = new FormValidator(validationConfig, '.popup__form-add');
   formValidator.enableValidation();
-  formValidator._clearInputErrors();
+  formValidator.clearInputErrors();
   openPopup(popupAddForm);
 });
 const closePopup = (element) => {
