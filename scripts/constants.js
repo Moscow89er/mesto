@@ -1,26 +1,66 @@
-export const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  errorFormElement: '.popup__form-error',
+  inactiveButtonClass: 'popup__save-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__form-error_active',
+};
+const buttonOpenEditProfileForm = document.querySelector('.profile__edit-button');
+const buttonOpenAddCardForm = document.querySelector('.profile__add-button');
+const profileTitle = document.querySelector('.profile__title');
+const profileSubtitle = document.querySelector('.profile__subtitle');
+const inputTypeAbout = document.querySelector('.popup__input_type_about');
+const inputTypeUsername = document.querySelector('.popup__input_type_username');
+const popupAddForm = document.querySelector('.popup_add_form');
+const popupEditForm = document.querySelector('.popup_edit_form');
+const popupEditProfileForm = document.querySelector('.popup__form');
+const closeButtons = document.querySelectorAll('.popup__close-button');
+const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
+const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
+const elements = document.querySelector('.elements');
+
+export { 
+  initialCards,
+  validationConfig,
+  buttonOpenEditProfileForm,
+  buttonOpenAddCardForm,
+  profileTitle,
+  profileSubtitle,
+  inputTypeAbout,
+  inputTypeUsername,
+  popupAddForm,
+  popupEditForm,
+  popupEditProfileForm,
+  closeButtons,
+  inputTypeCardName,
+  inputTypeCardLink,
+  elements
+}

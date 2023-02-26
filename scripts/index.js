@@ -1,19 +1,21 @@
+import { 
+  validationConfig,
+  buttonOpenEditProfileForm,
+  buttonOpenAddCardForm,
+  profileTitle,
+  profileSubtitle,
+  inputTypeAbout,
+  inputTypeUsername,
+  popupAddForm,
+  popupEditForm,
+  popupEditProfileForm,
+  closeButtons,
+  inputTypeCardName,
+  inputTypeCardLink,
+  elements
+} from './constants.js';
 import { Card } from './Card.js';
-import { FormValidator, validationConfig } from './FormValidator.js';
-
-const buttonOpenEditProfileForm = document.querySelector('.profile__edit-button');
-const buttonOpenAddCardForm = document.querySelector('.profile__add-button');
-const profileTitle = document.querySelector('.profile__title');
-const profileSubtitle = document.querySelector('.profile__subtitle');
-const inputTypeAbout = document.querySelector('.popup__input_type_about');
-const inputTypeUsername = document.querySelector('.popup__input_type_username');
-const popupAddForm = document.querySelector('.popup_add_form');
-const popupEditForm = document.querySelector('.popup_edit_form');
-const popupEditProfileForm = document.querySelector('.popup__form');
-const closeButtons = document.querySelectorAll('.popup__close-button');
-const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
-const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
-const elements = document.querySelector('.elements');
+import { FormValidator} from './FormValidator.js';
 export const openPopup = (element) => {
   document.addEventListener('mousedown', clickOutsideClosePopup);
   document.addEventListener('keydown', clickEscapeClosePopup);
@@ -25,7 +27,6 @@ const saveEditForm = (evt) => {
     profileTitle.textContent = inputTypeUsername.value;
     profileSubtitle.textContent = inputTypeAbout.value;
 };
-
 const saveAddForm = (evt) => {
   evt.preventDefault();
   const newCard = {
@@ -37,9 +38,6 @@ const saveAddForm = (evt) => {
   closePopup(popupAddForm);
   addForm.reset();
 };
-
-
-
 buttonOpenEditProfileForm.addEventListener('click', function () {
   inputTypeUsername.value = profileTitle.textContent;
   inputTypeAbout.value = profileSubtitle.textContent;
