@@ -44,14 +44,14 @@ buttonOpenEditProfileForm.addEventListener('click', function () {
   inputTypeUsername.value = profileTitle.textContent;
   inputTypeAbout.value = profileSubtitle.textContent;
   const formValidator = new FormValidator(validationConfig, '.popup__form-edit');
-  formValidator.enableValidation(validationConfig);
-  //formValidator._clearInputErrors(validationConfig);
+  formValidator.enableValidation();
+  formValidator._clearInputErrors();
   openPopup(popupEditForm);
 });
 buttonOpenAddCardForm.addEventListener('click', () => {
   const formValidator = new FormValidator(validationConfig, '.popup__form-add');
-  formValidator.enableValidation(validationConfig);
-  //formValidator._clearInputErrors(validationConfig);
+  formValidator.enableValidation();
+  formValidator._clearInputErrors();
   openPopup(popupAddForm);
 });
 const closePopup = (element) => {

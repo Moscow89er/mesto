@@ -38,9 +38,6 @@ export class FormValidator {
       this._hideInputError(formSelector, inputSelector);
     }
   };
-
-
-  //закончил тут
   _setEventListeners = (formSelector) => {
     const inputsList = Array.from(formSelector.querySelectorAll(this._inputSelector));
     const submitButtonSelector = formSelector.querySelector(this._submitButtonSelector);
@@ -72,24 +69,24 @@ export class FormValidator {
       submitButtonSelector.removeAttribute('disabled', 'disabled');
     }
   };
-  /*clearInputErrors = (validationConfig) => {
-    const errorFormElements = document.querySelectorAll(validationConfig.errorFormElement);
-    const inputsList = document.querySelectorAll(validationConfig.inputSelector);
+  _clearInputErrors = () => {
+    const errorFormElements = document.querySelectorAll(this._errorFormElement);
+    const inputsList = document.querySelectorAll(this._inputSelector);
     errorFormElements.forEach((errorElement) => {
       errorElement.textContent = '';
     });
     inputsList.forEach((inputSelector) => {
-      inputSelector.classList.remove(validationConfig.inputErrorClass);
+      inputSelector.classList.remove(this._inputErrorClass);
     });
-    addForm.reset();
-  };*/
+    //addForm.reset();
+  };
   enableValidation = () => {
     const formList = Array.from(document.querySelectorAll(this._form));
     formList.forEach((item) => {
       item.addEventListener('submit', function (evt) {
         evt.preventDefault();
       });
-      this._setEventListeners(item, validationConfig);
+      this._setEventListeners();
     });
   };
 };
