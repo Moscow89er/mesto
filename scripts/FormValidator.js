@@ -1,6 +1,5 @@
 export class FormValidator {
   constructor (config, form) {
-    /*this._selectorForm = config.selectorForm;*/
     this._selectorInput = config.selectorInput;
     this._buttonSelectorSubmit = config.buttonSelectorSubmit;
     this._errorFormElement = config.errorFormElement;
@@ -30,18 +29,17 @@ export class FormValidator {
   };
   _setEventListeners = (selectorForm) => {
     const inputsList = Array.from(selectorForm.querySelectorAll(this._selectorInput));
-    const buttonSelectorSubmit = selectorForm.querySelector(this._buttonSelectorSubmit);
-    this._toggleButtonState(inputsList, buttonSelectorSubmit);
+    const buttonSubmit = selectorForm.querySelector(this._buttonSelectorSubmit);
+    this._toggleButtonState(inputsList, buttonSubmit);
     selectorForm.addEventListener('reset', () => {
       setTimeout(() => {
-        this._toggleButtonState(inputsList, buttonSelectorSubmit);
+        this._toggleButtonState(inputsList, buttonSubmit);
       }, 0);
     });
-    this._toggleButtonState(inputsList, buttonSelectorSubmit);
     inputsList.forEach((selectorInput) => {
       selectorInput.addEventListener('input', () => {
         this._isValid(selectorForm, selectorInput);
-        this._toggleButtonState(inputsList, buttonSelectorSubmit);
+        this._toggleButtonState(inputsList, buttonSubmit);
       });
     });
   };
@@ -56,7 +54,7 @@ export class FormValidator {
       buttonSelectorSubmit.setAttribute('disabled', 'disabled');
     } else {
       buttonSelectorSubmit.classList.remove(this._buttonClassInactive);
-      buttonSelectorSubmit.removeAttribute('disabled', 'disabled');
+      buttonSelectorSubmit.removeAttribute('disabled');
     }
   };
   clearInputErrors = () => {
@@ -72,11 +70,8 @@ export class FormValidator {
   };
   enableValidation = () => {
     const formList = Array.from(document.querySelectorAll(this._form));
-    formList.forEach((selectorForm) => {
-      selectorForm.addEventListener('submit', function (evt) {
-        evt.preventDefault();
-      });
-      this._setEventListeners(selectorForm);
+    formList.forEach((form) => {
+      this._setEventListeners(form);
     });
   };
 };
