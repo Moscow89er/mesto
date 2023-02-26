@@ -13,12 +13,15 @@ import {
   buttonTypeClose,
   inputTypeCardName,
   inputTypeCardLink,
-  cardsContainer
+  cardsContainer,
+  popupList
 } from './constants.js';
 import { Card } from './Card.js';
 import { FormValidator} from './FormValidator.js';
 export const openPopup = (popup) => {
-  document.addEventListener('mousedown', clickOutsideClosePopup);
+  popupList.forEach (() => {
+    popup.addEventListener('mousedown', clickOutsideClosePopup);
+  });
   document.addEventListener('keydown', clickEscapeClosePopup);
   popup.classList.add('popup_opened');
 };
@@ -54,7 +57,6 @@ buttonOpenAddCardForm.addEventListener('click', () => {
   openPopup(popupAddForm);
 });
 const closePopup = (popup) => {
-  document.removeEventListener('mousedown', clickOutsideClosePopup);
   document.removeEventListener('keydown', clickEscapeClosePopup);
   popup.classList.remove('popup_opened');
 };
