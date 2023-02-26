@@ -1,4 +1,8 @@
-import { initialCards } from './constants.js';
+import { 
+  popupPicture,
+  popupImage,
+  popupTitlePicture
+} from './constants.js';
 import { openPopup } from './index.js';
 export class Card {
     constructor(data, templateSelector) {
@@ -12,6 +16,7 @@ export class Card {
     };
     generateCard() {
       this._card = this._getTemplate();
+      this._cardContainer = this._card.querySelector('.card__container');
       this._cardtImage = this._card.querySelector('.card__image');
       this._cardTitle = this._card.querySelector('.card__title');
       this._buttonDelete = this._card.querySelector('.card__delete-button');
@@ -30,9 +35,6 @@ export class Card {
         this._deleteCard();
       });
       this._cardtImage.addEventListener('click', () => {
-        const popupPicture = document.querySelector('.popup_picture');
-        const popupImage = document.querySelector('.popup__image');
-        const popupTitlePicture = document.querySelector('.popup__title-picture');
         openPopup(popupPicture);
         popupImage.src = this._link;
         popupImage.alt = this._name;
@@ -43,11 +45,7 @@ export class Card {
       this._buttonLike.classList.toggle('card__like-button_active');
     };
     _deleteCard() {
-      this._buttonDelete.closest('.card__container').remove();
+      this._cardContainer.remove();
+      this._card = null;
     };
 };
-initialCards.forEach (newCard => {
-    const card = new Card(newCard, '.card_type_default');
-    const cardElement = card.generateCard();
-    document.querySelector('.cards').append(cardElement);
-});

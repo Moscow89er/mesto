@@ -1,4 +1,5 @@
 import { 
+  initialCards,
   validationConfig,
   buttonOpenEditProfileForm,
   buttonOpenAddCardForm,
@@ -75,3 +76,8 @@ const clickEscapeClosePopup = (evt) => {
 };
 popupEditProfileForm.addEventListener('submit', saveEditForm);
 popupAddForm.addEventListener('submit', saveAddForm);
+initialCards.forEach (newCard => {
+  const card = new Card(newCard, '.card_type_default');
+  const cardElement = card.generateCard();
+  document.querySelector('.cards').append(cardElement);
+});
