@@ -46,8 +46,8 @@ export class Card {
       this._deleteButton.closest('.card__container').remove();
     };
 };
-initialCards.forEach (item => {
-    const card = new Card(item, '.card_type_default');
+initialCards.forEach (newCard => {
+    const card = new Card(newCard, '.card_type_default');
     const cardElement = card.generateCard();
     document.querySelector('.cards').append(cardElement);
 });

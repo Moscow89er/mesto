@@ -16,10 +16,10 @@ import {
 } from './constants.js';
 import { Card } from './Card.js';
 import { FormValidator} from './FormValidator.js';
-export const openPopup = (element) => {
+export const openPopup = (popup) => {
   document.addEventListener('mousedown', clickOutsideClosePopup);
   document.addEventListener('keydown', clickEscapeClosePopup);
-  element.classList.add('popup_opened');
+  popup.classList.add('popup_opened');
 };
 const saveEditForm = (evt) => {
     closePopup(popupEditForm);
@@ -52,14 +52,14 @@ buttonOpenAddCardForm.addEventListener('click', () => {
   formValidator.clearInputErrors();
   openPopup(popupAddForm);
 });
-const closePopup = (element) => {
+const closePopup = (popup) => {
   document.removeEventListener('mousedown', clickOutsideClosePopup);
   document.removeEventListener('keydown', clickEscapeClosePopup);
-  element.classList.remove('popup_opened');
+  popup.classList.remove('popup_opened');
 };
 closeButtons.forEach ((button) => {
-  const element = button.closest('.popup');
-  button.addEventListener('click', () => closePopup(element));
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
 });
 const clickOutsideClosePopup = (evt) => {
   const popupOpened = document.querySelector('.popup_opened');
