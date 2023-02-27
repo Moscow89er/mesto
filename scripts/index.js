@@ -1,6 +1,5 @@
 import { 
   initialCards,
-  validationConfig,
   buttonOpenEditProfileForm,
   buttonOpenAddCardForm,
   profileTitle,
@@ -15,10 +14,16 @@ import {
   inputTypeCardLink,
   cardsContainer,
   popupList,
-  popupFormList
+  formValidator
 } from './constants.js';
 import { Card } from './Card.js';
-import { FormValidator} from './FormValidator.js';
+
+const addNewCard = (data, templateSelector) => {
+  
+  const card = new Card(data, templateSelector);
+  return card.generateCard();
+}
+
 export const openPopup = (popup) => {
   popupList.forEach (() => {
     popup.addEventListener('mousedown', handleClosePopupByOverlay);
@@ -38,22 +43,17 @@ const saveAddForm = (evt) => {
     name: inputTypeCardName.value,
     link: inputTypeCardLink.value
   };
-  const card = new Card(newCard, '.card_type_default');
-  cardsContainer.prepend(card.generateCard());
+  cardsContainer.prepend(addNewCard(newCard, '.card_type_default'));
   closePopup(popupAddForm);
   addForm.reset();
 };
 buttonOpenEditProfileForm.addEventListener('click', function () {
   inputTypeUsername.value = profileTitle.textContent;
   inputTypeAbout.value = profileSubtitle.textContent;
-  const formValidator = new FormValidator(validationConfig, '.popup__form-edit');
-  formValidator.enableValidation();
   formValidator.clearInputErrors();
   openPopup(popupEditForm);
 });
 buttonOpenAddCardForm.addEventListener('click', () => {
-  const formValidator = new FormValidator(validationConfig, '.popup__form-add');
-  formValidator.enableValidation();
   formValidator.clearInputErrors();
   openPopup(popupAddForm);
 });
@@ -79,8 +79,8 @@ const clickEscapeClosePopup = (evt) => {
 };
 popupEditProfileForm.addEventListener('submit', saveEditForm);
 popupAddForm.addEventListener('submit', saveAddForm);
-initialCards.forEach (newCard => {
-  const card = new Card(newCard, '.card_type_default');
-  const cardElement = card.generateCard();
-  document.querySelector('.cards').append(cardElement);
+initialCards.forEach ((initialCard) => {
+  const cardElement = addNewCard(initialCard, '.card_type_default');
+  cardsContainer.append(cardElement);
 });
+formValidator.enableValidation();
