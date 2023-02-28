@@ -1,9 +1,4 @@
-import { 
-  popupPicture,
-  popupImage,
-  popupTitlePicture
-} from './constants.js';
-import { openPopup } from './index.js';
+import { openImagePopup } from './utils.js';
 export class Card {
     constructor(data, templateSelector) {
       this._name = data.name;
@@ -17,14 +12,14 @@ export class Card {
     generateCard() {
       this._card = this._getTemplate();
       this._cardContainer = this._card.querySelector('.card__container');
-      this._cardtImage = this._card.querySelector('.card__image');
+      this._cardImage = this._card.querySelector('.card__image');
       this._cardTitle = this._card.querySelector('.card__title');
       this._buttonDelete = this._card.querySelector('.card__delete-button');
       this._buttonLike = this._card.querySelector('.card__like-button');
       this._setEventListeners();
       this._cardTitle.textContent = this._name;
-      this._cardtImage.alt = this._name;
-      this._cardtImage.src = this._link;
+      this._cardImage.alt = this._name;
+      this._cardImage.src = this._link;
       return this._card;
     };
     _setEventListeners() {
@@ -34,11 +29,8 @@ export class Card {
       this._buttonDelete.addEventListener('click', () => {
         this._deleteCard();
       });
-      this._cardtImage.addEventListener('click', () => {
-        openPopup(popupPicture);
-        popupImage.src = this._link;
-        popupImage.alt = this._name;
-        popupTitlePicture.textContent = this._name;
+      this._cardImage.addEventListener('click', () => {
+        openImagePopup(this._name, this._link);
       });
     };
     _likeCard() {

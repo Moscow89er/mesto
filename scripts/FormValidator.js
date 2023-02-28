@@ -52,7 +52,6 @@ export class FormValidator {
   };
   _toggleButtonState = () => {
     if (this._hasInvalidInput ()) {
-      //const attr = this._buttonSubmit.attr;
       this._buttonSubmit.classList.add(this._buttonClassInactive);
       this._buttonSubmit.attr = 'disabled';
     } else {

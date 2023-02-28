@@ -13,7 +13,6 @@ import {
   inputTypeCardName,
   inputTypeCardLink,
   cardsContainer,
-  popupList,
   formAddValidator,
   formEditValidator
 } from './constants.js';
@@ -21,13 +20,6 @@ import { Card } from './Card.js';
 const addNewCard = (data, templateSelector) => {
   const card = new Card(data, templateSelector);
   return card.generateCard();
-}
-export const openPopup = (popup) => {
-  popupList.forEach (() => {
-    popup.addEventListener('mousedown', handleClosePopupByOverlay);
-  });
-  document.addEventListener('keydown', clickEscapeClosePopup);
-  popup.classList.add('popup_opened');
 };
 const saveEditForm = (evt) => {
     closePopup(popupEditForm);
@@ -48,19 +40,15 @@ const saveAddForm = (evt) => {
 buttonOpenEditProfileForm.addEventListener('click', function () {
   inputTypeUsername.value = profileTitle.textContent;
   inputTypeAbout.value = profileSubtitle.textContent;
-  
   openPopup(popupEditForm);
 });
 buttonOpenAddCardForm.addEventListener('click', () => {
-  
   openPopup(popupAddForm);
 });
 const closePopup = (popup) => {
   document.removeEventListener('keydown', clickEscapeClosePopup);
   popup.classList.remove('popup_opened');
   addForm.reset();
-
-  
   formEditValidator.clearInputErrors();
   formAddValidator.clearInputErrors();
 };
@@ -68,13 +56,13 @@ buttonTypeClose.forEach ((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
-const handleClosePopupByOverlay = (evt) => {
+export const handleClosePopupByOverlay = (evt) => {
   const popupOpened = document.querySelector('.popup_opened');
   if (evt.target === popupOpened) {
     closePopup(popupOpened);
   }
 };
-const clickEscapeClosePopup = (evt) => {
+export const clickEscapeClosePopup = (evt) => {
   if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
@@ -87,6 +75,4 @@ initialCards.forEach ((initialCard) => {
   cardsContainer.append(cardElement);
 });
 formAddValidator.enableValidation();
-
 formEditValidator.enableValidation();
-
