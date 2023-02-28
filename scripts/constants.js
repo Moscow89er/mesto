@@ -51,7 +51,8 @@ const popupPicture = document.querySelector('.popup_picture');
 const popupImage = document.querySelector('.popup__image');
 const popupTitlePicture = document.querySelector('.popup__title-picture');
 const popupList = document.querySelectorAll('.popup');
-const formValidator = new FormValidator(validationConfig, '.popup__form');
+const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
+const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
 export { 
   initialCards,
   validationConfig,
@@ -72,5 +73,6 @@ export {
   popupImage,
   popupTitlePicture,
   popupList,
-  formValidator
+  formAddValidator,
+  formEditValidator
 };

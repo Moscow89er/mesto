@@ -9,6 +9,7 @@ export class FormValidator {
     this._formClassError = config.formClassError;
     this._form = form;
     this._selectorForm = document.querySelector(this._form);
+    this._buttonSubmit = this._selectorForm.querySelector(this._buttonSelectorSubmit);
     this._inputsList = Array.from(this._selectorForm.querySelectorAll(this._selectorInput));
   };
   _showInputError = (inputElement, errorMessage) => {
@@ -31,7 +32,6 @@ export class FormValidator {
     }
   };
   _setEventListeners = () => {
-    this._buttonSubmit = this._selectorForm.querySelector(this._buttonSelectorSubmit);
     this._toggleButtonState();
     this._selectorForm.addEventListener('reset', () => {
       setTimeout(() => {
@@ -61,16 +61,16 @@ export class FormValidator {
   };
   clearInputErrors = () => {
     const errorFormElements = this._selectorForm.querySelectorAll(this._errorFormElement);
+    const inputsList = this._selectorForm.querySelectorAll(this._selectorInput);
     errorFormElements.forEach((errorElement) => {
       errorElement.textContent = '';
     });
-    this._inputsList.forEach((selectorInput) => {
-      selectorInput.classList.remove(this._inputClassError);
+    inputsList.forEach((inputElement) => {
+      inputElement.classList.remove(this._inputClassError);
     });
-    addForm.reset();
+      
   };
   enableValidation = () => {
-    const form = this._selectorForm;
-    this._setEventListeners(form);
+    this._setEventListeners();
   };
 };

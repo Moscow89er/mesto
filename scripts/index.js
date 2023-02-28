@@ -14,16 +14,14 @@ import {
   inputTypeCardLink,
   cardsContainer,
   popupList,
-  formValidator
+  formAddValidator,
+  formEditValidator
 } from './constants.js';
 import { Card } from './Card.js';
-
 const addNewCard = (data, templateSelector) => {
-  
   const card = new Card(data, templateSelector);
   return card.generateCard();
 }
-
 export const openPopup = (popup) => {
   popupList.forEach (() => {
     popup.addEventListener('mousedown', handleClosePopupByOverlay);
@@ -50,18 +48,21 @@ const saveAddForm = (evt) => {
 buttonOpenEditProfileForm.addEventListener('click', function () {
   inputTypeUsername.value = profileTitle.textContent;
   inputTypeAbout.value = profileSubtitle.textContent;
-  formValidator.clearInputErrors();
-  formValidator.enableValidation();
+  
   openPopup(popupEditForm);
 });
 buttonOpenAddCardForm.addEventListener('click', () => {
-  formValidator.clearInputErrors();
-  formValidator.enableValidation();
+  
   openPopup(popupAddForm);
 });
 const closePopup = (popup) => {
   document.removeEventListener('keydown', clickEscapeClosePopup);
   popup.classList.remove('popup_opened');
+  addForm.reset();
+
+  
+  formEditValidator.clearInputErrors();
+  formAddValidator.clearInputErrors();
 };
 buttonTypeClose.forEach ((button) => {
   const popup = button.closest('.popup');
@@ -85,4 +86,7 @@ initialCards.forEach ((initialCard) => {
   const cardElement = addNewCard(initialCard, '.card_type_default');
   cardsContainer.append(cardElement);
 });
-//formValidator.enableValidation();
+formAddValidator.enableValidation();
+
+formEditValidator.enableValidation();
+
