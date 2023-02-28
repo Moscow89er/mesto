@@ -16,18 +16,19 @@ import {
   formAddValidator,
   formEditValidator
 } from './constants.js';
+import { openPopup } from './utils.js';
 import { Card } from './Card.js';
 const addNewCard = (data, templateSelector) => {
   const card = new Card(data, templateSelector);
   return card.generateCard();
 };
-const saveEditForm = (evt) => {
+const handleSaveEditForm = (evt) => {
     closePopup(popupEditForm);
     evt.preventDefault();
     profileTitle.textContent = inputTypeUsername.value;
     profileSubtitle.textContent = inputTypeAbout.value;
 };
-const saveAddForm = (evt) => {
+const handleSaveAddForm = (evt) => {
   evt.preventDefault();
   const newCard = {
     name: inputTypeCardName.value,
@@ -37,11 +38,12 @@ const saveAddForm = (evt) => {
   closePopup(popupAddForm);
   addForm.reset();
 };
-buttonOpenEditProfileForm.addEventListener('click', function () {
+const customizationEditProfileForm = () => {
   inputTypeUsername.value = profileTitle.textContent;
   inputTypeAbout.value = profileSubtitle.textContent;
   openPopup(popupEditForm);
-});
+};
+buttonOpenEditProfileForm.addEventListener('click', customizationEditProfileForm);
 buttonOpenAddCardForm.addEventListener('click', () => {
   openPopup(popupAddForm);
 });
@@ -68,8 +70,8 @@ export const clickEscapeClosePopup = (evt) => {
     closePopup(popupOpened);
   }
 };
-popupEditProfileForm.addEventListener('submit', saveEditForm);
-popupAddForm.addEventListener('submit', saveAddForm);
+popupEditProfileForm.addEventListener('submit', handleSaveEditForm);
+popupAddForm.addEventListener('submit', handleSaveAddForm);
 initialCards.forEach ((initialCard) => {
   const cardElement = addNewCard(initialCard, '.card_type_default');
   cardsContainer.append(cardElement);
