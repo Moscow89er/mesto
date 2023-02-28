@@ -51,10 +51,12 @@ buttonOpenEditProfileForm.addEventListener('click', function () {
   inputTypeUsername.value = profileTitle.textContent;
   inputTypeAbout.value = profileSubtitle.textContent;
   formValidator.clearInputErrors();
+  formValidator.enableValidation();
   openPopup(popupEditForm);
 });
 buttonOpenAddCardForm.addEventListener('click', () => {
   formValidator.clearInputErrors();
+  formValidator.enableValidation();
   openPopup(popupAddForm);
 });
 const closePopup = (popup) => {
@@ -83,4 +85,4 @@ initialCards.forEach ((initialCard) => {
   const cardElement = addNewCard(initialCard, '.card_type_default');
   cardsContainer.append(cardElement);
 });
-formValidator.enableValidation();
+//formValidator.enableValidation();
