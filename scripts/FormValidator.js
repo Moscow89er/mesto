@@ -1,5 +1,5 @@
 export class FormValidator {
-  constructor (config, form) {
+  constructor (config, formSelector) {
     this.config = config;
     this._selectorInput = config.selectorInput;
     this._buttonSelectorSubmit = config.buttonSelectorSubmit;
@@ -7,19 +7,19 @@ export class FormValidator {
     this._buttonClassInactive = config.buttonClassInactive;
     this._inputClassError = config.inputClassError;
     this._formClassError = config.formClassError;
-    this._form = form;
-    this._selectorForm = document.querySelector(this._form);
-    this._buttonSubmit = this._selectorForm.querySelector(this._buttonSelectorSubmit);
-    this._inputsList = Array.from(this._selectorForm.querySelectorAll(this._selectorInput));
+    this._formSelector = formSelector;
+    this._form = document.querySelector(this._formSelector);
+    this._buttonSubmit = this._form.querySelector(this._buttonSelectorSubmit);
+    this._inputsList = Array.from(this._form.querySelectorAll(this._selectorInput));
   };
   _showInputError = (input, errorMessage) => {
-    const errorElement = this._selectorForm.querySelector(`.${input.id}-error`);
+    const errorElement = this._form.querySelector(`.${input.id}-error`);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._formClassError);
     input.classList.add(this._inputClassError);
   };
   _hideInputError = (input) => {
-    const errorElement = this._selectorForm.querySelector(`.${input.id}-error`);
+    const errorElement = this._form.querySelector(`.${input.id}-error`);
     errorElement.classList.remove(this._formClassError);
     errorElement.textContent = '';
     input.classList.remove(this._inputClassError);
@@ -33,7 +33,7 @@ export class FormValidator {
   };
   _setEventListeners = () => {
     this._toggleButtonState();
-    this._selectorForm.addEventListener('reset', () => {
+    this._form.addEventListener('reset', () => {
       setTimeout(() => {
         this._toggleButtonState();
       }, 0);
@@ -53,7 +53,7 @@ export class FormValidator {
   _toggleButtonState = () => {
     if (this._hasInvalidInput ()) {
       this._buttonSubmit.classList.add(this._buttonClassInactive);
-      this._buttonSubmit.attr = 'disabled';
+      this._buttonSubmit.disabled = true;
     } else {
       this._buttonSubmit.classList.remove(this._buttonClassInactive);
       this._buttonSubmit.removeAttribute('disabled');

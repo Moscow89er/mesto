@@ -3,13 +3,9 @@ import {
     popupImage,
     popupTitlePicture
   } from './constants.js';
-import { popupList } from './constants.js';
-import { handleClosePopupByOverlay, clickEscapeClosePopup } from './index.js';
+import { handleClosePopupByEsc } from './index.js';
 export const openPopup = (popup) => {
-    popupList.forEach (() => {
-      popup.addEventListener('mousedown', handleClosePopupByOverlay);
-    });
-    document.addEventListener('keydown', clickEscapeClosePopup);
+    document.addEventListener('keydown', handleClosePopupByEsc);
     popup.classList.add('popup_opened');
 };
 export const openImagePopup = (name, link) => {

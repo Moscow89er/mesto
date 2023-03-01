@@ -50,7 +50,6 @@ const popupPicture = document.querySelector('.popup_picture');
 const popupImage = document.querySelector('.popup__image');
 const popupTitlePicture = document.querySelector('.popup__title-picture');
 const popupList = document.querySelectorAll('.popup');
-
 export { 
   initialCards,
   validationConfig,
