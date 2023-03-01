@@ -13,11 +13,13 @@ import {
   inputTypeCardName,
   inputTypeCardLink,
   cardsContainer,
-  formAddValidator,
-  formEditValidator
+  validationConfig
 } from './constants.js';
 import { openPopup } from './utils.js';
 import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
+const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
+const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
 const addNewCard = (data, templateSelector) => {
   const card = new Card(data, templateSelector);
   return card.generateCard();

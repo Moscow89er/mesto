@@ -1,4 +1,3 @@
-import { FormValidator } from './FormValidator.js';
 const initialCards = [
   {
     name: 'Архыз',
@@ -51,8 +50,7 @@ const popupPicture = document.querySelector('.popup_picture');
 const popupImage = document.querySelector('.popup__image');
 const popupTitlePicture = document.querySelector('.popup__title-picture');
 const popupList = document.querySelectorAll('.popup');
-const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
-const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
+
 export { 
   initialCards,
   validationConfig,
@@ -72,7 +70,5 @@ export {
   popupPicture,
   popupImage,
   popupTitlePicture,
-  popupList,
-  formAddValidator,
-  formEditValidator
+  popupList
 };
