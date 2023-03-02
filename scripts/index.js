@@ -66,7 +66,6 @@ const handleSaveAddForm = (evt) => {
   };
   cardsContainer.prepend(createCard(newCard, '.card_type_default'));
   closePopup(popupAddForm);
-  addForm.reset();
 };
 buttonTypeClose.forEach ((button) => {
   const popup = button.closest('.popup');
