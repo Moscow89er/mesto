@@ -1,5 +1,5 @@
-import { openImagePopup } from './utils.js';
-export class Card {
+//import { openImagePopup } from './utils.js';
+export default class Card {
     constructor(data, templateSelector) {
       this._name = data.name;
       this._link = data.link;

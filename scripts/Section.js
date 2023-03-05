@@ -1,8 +1,7 @@
-import { Card } from './Card.js';
-
 export default class Section {
-    constructor ({ data /*, renderer*/ }, containerSelector) {
-        this._renderedItems = data;
+    constructor ({ items, renderer }, containerSelector) {
+        this._renderedItems = items;
+        this._renderer = renderer;
         this._container = document.querySelector(containerSelector);
         };
         addItem (element) {
@@ -10,9 +9,7 @@ export default class Section {
         };
         renderItems () {
             this._renderedItems.forEach((item) => {
-                const card = new Card (item, '.card_type_default');
-                const sectionElement = card.generateCard();
-                this.addItem(sectionElement);
+                this._renderer(item);
             });
         };
     };

@@ -1,4 +1,4 @@
-import { 
+/*import { 
     popupPicture,
     popupImage,
     popupTitlePicture
@@ -13,4 +13,4 @@ export const openImagePopup = (name, link) => {
     popupImage.alt = name;
     popupTitlePicture.textContent = name;
     openPopup(popupPicture);
-};
+};*/

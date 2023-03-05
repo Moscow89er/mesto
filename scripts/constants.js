@@ -39,9 +39,11 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const inputTypeAbout = document.querySelector('.popup__input_type_about');
 const inputTypeUsername = document.querySelector('.popup__input_type_username');
-const popupAddForm = document.querySelector('.popup_add_form');
-const popupEditForm = document.querySelector('.popup_edit_form');
-const popupEditProfileForm = document.querySelector('.popup__form');
+//const popupAddForm = document.querySelector('.popup_add_form');
+//const popupEditForm = document.querySelector('.popup_edit_form');
+const popupAddFormSelector = '.popup_add_form';
+const popupEditFormSelector = '.popup_edit_form';
+const popupForm = document.querySelector('.popup__form');
 const buttonTypeClose = document.querySelectorAll('.popup__close-button');
 const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
 const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
@@ -60,9 +62,11 @@ export {
   profileSubtitle,
   inputTypeAbout,
   inputTypeUsername,
-  popupAddForm,
-  popupEditForm,
-  popupEditProfileForm,
+  //popupAddForm,
+  //popupEditForm,
+  popupAddFormSelector,
+  popupEditFormSelector,
+  popupForm,
   buttonTypeClose,
   inputTypeCardName,
   inputTypeCardLink,
