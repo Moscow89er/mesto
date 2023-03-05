@@ -46,6 +46,7 @@ const buttonTypeClose = document.querySelectorAll('.popup__close-button');
 const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
 const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
 const cardsContainer = document.querySelector('.cards');
+const cardsContainerSelector = '.cards';
 const popupPicture = document.querySelector('.popup_picture');
 const popupImage = document.querySelector('.popup__image');
 const popupTitlePicture = document.querySelector('.popup__title-picture');
@@ -66,6 +67,7 @@ export {
   inputTypeCardName,
   inputTypeCardLink,
   cardsContainer,
+  cardsContainerSelector,
   popupPicture,
   popupImage,
   popupTitlePicture,

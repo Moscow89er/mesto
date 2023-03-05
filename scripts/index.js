@@ -1,5 +1,6 @@
 import { 
   initialCards,
+  cardsContainerSelector,
   buttonOpenEditProfileForm,
   buttonOpenAddCardForm,
   profileTitle,
@@ -7,24 +8,29 @@ import {
   inputTypeAbout,
   inputTypeUsername,
   popupAddForm,
+  cardsContainer,
   popupEditForm,
   popupEditProfileForm,
   buttonTypeClose,
   inputTypeCardName,
   inputTypeCardLink,
-  cardsContainer,
   validationConfig,
   popupList
 } from './constants.js';
+
+
+import Section from './Section.js';
 import { openPopup } from './utils.js';
-import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
+
+
+const cardList = new Section ({data: initialCards}, cardsContainerSelector);
+
+
 const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
 const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
-const createCard = (data, templateSelector) => {
-  const card = new Card(data, templateSelector);
-  return card.generateCard();
-};
+
+
 const openEditProfilePopup = () => {
   inputTypeUsername.value = profileTitle.textContent;
   inputTypeAbout.value = profileSubtitle.textContent;
@@ -64,17 +70,14 @@ const handleSaveAddForm = (evt) => {
     name: inputTypeCardName.value,
     link: inputTypeCardLink.value
   };
-  cardsContainer.prepend(createCard(newCard, '.card_type_default'));
+  cardList.renderItems(newCard, '.card_type_default');
   closePopup(popupAddForm);
 };
 buttonTypeClose.forEach ((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
-initialCards.forEach ((initialCard) => {
-  const cardElement = createCard(initialCard, '.card_type_default');
-  cardsContainer.append(cardElement);
-});
+
 popupList.forEach ((popup) => {
   popup.addEventListener('mousedown', handleClosePopupByOverlay);
 });
@@ -83,4 +86,22 @@ popupAddForm.addEventListener('submit', handleSaveAddForm);
 buttonOpenEditProfileForm.addEventListener('click', openEditProfilePopup);
 buttonOpenAddCardForm.addEventListener('click', openAddCardForm);
 formAddValidator.enableValidation();
-formEditValidator.enableValidation();
+formEditValidator.enableValidation(); 
+cardList.renderItems();
+
+
+
+
+
+
+
+
+
+/*const createCard = (data, templateSelector) => {
+  const card = new Card(data, templateSelector);
+  return card.generateCard();
+};*/
+/*initialCards.forEach ((initialCard) => {
+  const cardElement = createCard(initialCard, '.card_type_default');
+  cardsContainer.prepend(cardElement);
+});*/
