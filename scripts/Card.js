@@ -1,4 +1,6 @@
-//import { openImagePopup } from './utils.js';
+/*import { popupWithImageFormSelector } from './constants.js';
+import PopupWithImage from './PopupWithImage.js';
+const popupWithImage = new PopupWithImage (popupWithImageFormSelector);*/
 export default class Card {
     constructor(data, templateSelector) {
       this._name = data.name;
@@ -30,7 +32,7 @@ export default class Card {
         this._deleteCard();
       });
       this._cardImage.addEventListener('click', () => {
-        openImagePopup(this._name, this._link);
+        popupWithImage.open(this._name, this._link);
       });
     };
     _likeCard() {

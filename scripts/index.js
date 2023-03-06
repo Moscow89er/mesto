@@ -8,25 +8,20 @@ import {
   inputTypeAbout,
   inputTypeUsername,
   cardsContainer,
-  //popupAddForm,
-  //popupEditForm,
-  popupForm,
+  popupAddForm,
+  popupEditForm,
   popupAddFormSelector,
   popupEditFormSelector,
-  //buttonTypeClose,
+  popupWithImageFormSelector,
   inputTypeCardName,
   inputTypeCardLink,
   validationConfig,
-  //popupList
 } from './constants.js';
-
-
+import PopupWithImage from './PopupWithImage.js';
 import Card from './Card.js';
 import Section from './Section.js';
 import Popup from './Popup.js';
-
 import { FormValidator } from './FormValidator.js';
-
 const cardList = new Section ({
   items: initialCards,
   renderer: (item) => {
@@ -35,18 +30,15 @@ const cardList = new Section ({
     cardList.addItem(sectionElement);
   }
 }, cardsContainerSelector);
-
 const popupAddCard = new Popup (popupAddFormSelector);
 const popupEditProfile = new Popup (popupEditFormSelector);
-
+const popupWithImage = new PopupWithImage (popupWithImageFormSelector);
 const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
 const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
-
 const createCard = (data, templateSelector) => {
   const card = new Card(data, templateSelector);
   return card.generateCard();
 };
-
 const openEditProfilePopup = () => {
   inputTypeUsername.value = profileTitle.textContent;
   inputTypeAbout.value = profileSubtitle.textContent;
@@ -73,14 +65,13 @@ const handleSaveAddForm = (evt) => {
   cardsContainer.prepend(createCard(newCard, '.card_type_default'));
   popupAddCard.close();
 };
-popupForm.addEventListener('submit', handleSaveEditForm);
-popupForm.addEventListener('submit', handleSaveAddForm);
+popupEditForm.addEventListener('submit', handleSaveEditForm);
+popupAddForm.addEventListener('submit', handleSaveAddForm);
 buttonOpenEditProfileForm.addEventListener('click', openEditProfilePopup);
 buttonOpenAddCardForm.addEventListener('click', openAddCardForm);
 formAddValidator.enableValidation();
 formEditValidator.enableValidation();
-
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
-
+popupWithImage.setEventListeners();
 cardList.renderItems();

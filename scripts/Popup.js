@@ -4,15 +4,15 @@ export default class Popup {
         this._buttonTypeClose = this._popup.querySelector('.popup__close-button');
     };
     open () {
+        document.addEventListener('keydown', this._handleEscClose);
         this._popup.classList.add('popup_opened');
     };
     close () {
-        //this._popup.removeEventListener('keydown', this._handleEscClose);
+        document.removeEventListener('keydown', this._handleEscClose);
         this._popup.classList.remove('popup_opened');
     };
     _handleEscClose = (evt) => {
         if (evt.key === 'Escape') {
-            console.log('Ты нажал на Esc');
             this.close();
         }
     };
@@ -26,13 +26,5 @@ export default class Popup {
             this.close();
         });
         this._popup.addEventListener('mousedown', this._handleClosePopupByOverlay);
-        document.addEventListener('keydown', this._handleEscClose);
     };
 };
-/*export const handleClosePopupByEsc = (evt) => {
-  if (evt.key === 'Escape') {
-    const popupOpened = document.querySelector('.popup_opened');
-    closePopup(popupOpened);
-  }
-};
-*/
