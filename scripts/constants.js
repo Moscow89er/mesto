@@ -39,8 +39,8 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const inputTypeAbout = document.querySelector('.popup__input_type_about');
 const inputTypeUsername = document.querySelector('.popup__input_type_username');
-const popupAddForm = document.querySelector('.popup_add_form');
-const popupEditForm = document.querySelector('.popup_edit_form');
+//const popupAddForm = document.querySelector('.popup_add_form');
+//const popupEditForm = document.querySelector('.popup_edit_form');
 const popupAddFormSelector = '.popup_add_form';
 const popupEditFormSelector = '.popup_edit_form';
 const popupWithImageFormSelector = '.popup_picture';
@@ -63,8 +63,8 @@ export {
   profileSubtitle,
   inputTypeAbout,
   inputTypeUsername,
-  popupAddForm,
-  popupEditForm,
+  //popupAddForm,
+  //popupEditForm,
   popupAddFormSelector,
   popupEditFormSelector,
   popupWithImageFormSelector,

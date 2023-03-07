@@ -8,8 +8,6 @@ import {
   inputTypeAbout,
   inputTypeUsername,
   cardsContainer,
-  popupAddForm,
-  popupEditForm,
   popupAddFormSelector,
   popupEditFormSelector,
   popupWithImageFormSelector,
@@ -20,7 +18,6 @@ import {
 import PopupWithImage from './PopupWithImage.js';
 import Card from './Card.js';
 import Section from './Section.js';
-//import Popup from './Popup.js';
 import PopupWithForm from './PopupWithForm.js';
 import { FormValidator } from './FormValidator.js';
 const cardList = new Section ({
@@ -31,11 +28,9 @@ const cardList = new Section ({
     cardList.addItem(sectionElement);
   }
 }, cardsContainerSelector);
-
 const popupAddCard = new PopupWithForm ({
   popupSelector: popupAddFormSelector,
   handleFormSubmit: () => {
-    
     const newCard = {
       name: inputTypeCardName.value,
       link: inputTypeCardLink.value
@@ -48,15 +43,10 @@ const popupEditProfile = new PopupWithForm ({
   popupSelector: popupEditFormSelector,
   handleFormSubmit: () => {
     popupEditProfile.close();
-    
     profileTitle.textContent = inputTypeUsername.value;
     profileSubtitle.textContent = inputTypeAbout.value;
   }
 });
-
-
-/*const popupAddCard = new Popup (popupAddFormSelector);
-const popupEditProfile = new Popup (popupEditFormSelector);*/
 const popupWithImage = new PopupWithImage (popupWithImageFormSelector);
 const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
 const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
@@ -71,27 +61,10 @@ const openEditProfilePopup = () => {
   popupEditProfile.open();
 };
 const openAddCardForm = () => {
-  addForm.reset();
+  //addForm.reset();
   formAddValidator.clearInputErrors();
   popupAddCard.open();
 };
-/*const handleSaveEditForm = (evt) => {
-  popupEditProfile.close();
-  //evt.preventDefault();
-  profileTitle.textContent = inputTypeUsername.value;
-  profileSubtitle.textContent = inputTypeAbout.value;
-};
-const handleSaveAddForm = (evt) => {
-  //evt.preventDefault();
-  const newCard = {
-    name: inputTypeCardName.value,
-    link: inputTypeCardLink.value
-  };
-  cardsContainer.prepend(createCard(newCard, '.card_type_default'));
-  popupAddCard.close();
-};*/
-//popupEditForm.addEventListener('submit', handleSaveEditForm);
-//popupAddForm.addEventListener('submit', handleSaveAddForm);
 buttonOpenEditProfileForm.addEventListener('click', openEditProfilePopup);
 buttonOpenAddCardForm.addEventListener('click', openAddCardForm);
 formAddValidator.enableValidation();
