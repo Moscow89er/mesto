@@ -1,6 +1,6 @@
-/*import { popupWithImageFormSelector } from './constants.js';
+import { popupWithImageFormSelector } from './constants.js';
 import PopupWithImage from './PopupWithImage.js';
-const popupWithImage = new PopupWithImage (popupWithImageFormSelector);*/
+const popupWithImage = new PopupWithImage (popupWithImageFormSelector);
 export default class Card {
     constructor(data, templateSelector) {
       this._name = data.name;

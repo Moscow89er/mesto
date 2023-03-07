@@ -20,7 +20,8 @@ import {
 import PopupWithImage from './PopupWithImage.js';
 import Card from './Card.js';
 import Section from './Section.js';
-import Popup from './Popup.js';
+//import Popup from './Popup.js';
+import PopupWithForm from './PopupWithForm.js';
 import { FormValidator } from './FormValidator.js';
 const cardList = new Section ({
   items: initialCards,
@@ -30,8 +31,28 @@ const cardList = new Section ({
     cardList.addItem(sectionElement);
   }
 }, cardsContainerSelector);
-const popupAddCard = new Popup (popupAddFormSelector);
-const popupEditProfile = new Popup (popupEditFormSelector);
+
+const popupAddCard = new PopupWithForm ({
+  popupSelector: popupAddFormSelector,
+  handleFormSubmit: (formData) => {
+    const card = new Card (formData, '.card_type_default');
+    //const cardElement = card.generateCard();
+    //cardList.setItem(cardElement);
+  }
+});
+const popupEditProfile = new PopupWithForm ({
+  popupSelector: popupEditFormSelector,
+  handleFormSubmit: (formData) => {
+    const card = new Card (formData, '.card_type_default');
+    //const cardElement = card.generateCard();
+   //cardList.setItem(cardElement);
+  }
+});
+
+
+
+/*const popupAddCard = new Popup (popupAddFormSelector);
+const popupEditProfile = new Popup (popupEditFormSelector);*/
 const popupWithImage = new PopupWithImage (popupWithImageFormSelector);
 const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
 const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
@@ -52,12 +73,12 @@ const openAddCardForm = () => {
 };
 const handleSaveEditForm = (evt) => {
   popupEditProfile.close();
-  evt.preventDefault();
+  //evt.preventDefault();
   profileTitle.textContent = inputTypeUsername.value;
   profileSubtitle.textContent = inputTypeAbout.value;
 };
 const handleSaveAddForm = (evt) => {
-  evt.preventDefault();
+  //evt.preventDefault();
   const newCard = {
     name: inputTypeCardName.value,
     link: inputTypeCardLink.value
