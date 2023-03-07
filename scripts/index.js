@@ -34,21 +34,25 @@ const cardList = new Section ({
 
 const popupAddCard = new PopupWithForm ({
   popupSelector: popupAddFormSelector,
-  handleFormSubmit: (formData) => {
-    const card = new Card (formData, '.card_type_default');
-    //const cardElement = card.generateCard();
-    //cardList.setItem(cardElement);
+  handleFormSubmit: () => {
+    
+    const newCard = {
+      name: inputTypeCardName.value,
+      link: inputTypeCardLink.value
+    };
+    cardsContainer.prepend(createCard(newCard, '.card_type_default'));
+    popupAddCard.close();
   }
 });
 const popupEditProfile = new PopupWithForm ({
   popupSelector: popupEditFormSelector,
-  handleFormSubmit: (formData) => {
-    const card = new Card (formData, '.card_type_default');
-    //const cardElement = card.generateCard();
-   //cardList.setItem(cardElement);
+  handleFormSubmit: () => {
+    popupEditProfile.close();
+    
+    profileTitle.textContent = inputTypeUsername.value;
+    profileSubtitle.textContent = inputTypeAbout.value;
   }
 });
-
 
 
 /*const popupAddCard = new Popup (popupAddFormSelector);
@@ -71,7 +75,7 @@ const openAddCardForm = () => {
   formAddValidator.clearInputErrors();
   popupAddCard.open();
 };
-const handleSaveEditForm = (evt) => {
+/*const handleSaveEditForm = (evt) => {
   popupEditProfile.close();
   //evt.preventDefault();
   profileTitle.textContent = inputTypeUsername.value;
@@ -85,9 +89,9 @@ const handleSaveAddForm = (evt) => {
   };
   cardsContainer.prepend(createCard(newCard, '.card_type_default'));
   popupAddCard.close();
-};
-popupEditForm.addEventListener('submit', handleSaveEditForm);
-popupAddForm.addEventListener('submit', handleSaveAddForm);
+};*/
+//popupEditForm.addEventListener('submit', handleSaveEditForm);
+//popupAddForm.addEventListener('submit', handleSaveAddForm);
 buttonOpenEditProfileForm.addEventListener('click', openEditProfilePopup);
 buttonOpenAddCardForm.addEventListener('click', openAddCardForm);
 formAddValidator.enableValidation();
