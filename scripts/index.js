@@ -3,8 +3,6 @@ import {
   cardsContainerSelector,
   buttonOpenEditProfileForm,
   buttonOpenAddCardForm,
-  profileTitle,
-  profileSubtitle,
   inputTypeAbout,
   inputTypeUsername,
   cardsContainer,
@@ -20,6 +18,11 @@ import Card from './Card.js';
 import Section from './Section.js';
 import PopupWithForm from './PopupWithForm.js';
 import { FormValidator } from './FormValidator.js';
+import UserInfo from './UserInfo.js'; 
+const userInfo = new UserInfo ({
+  aboutUserSelector: '.profile__subtitle',
+  userNameSelector: '.profile__title'
+});
 const cardList = new Section ({
   items: initialCards,
   renderer: (item) => {
@@ -41,10 +44,9 @@ const popupAddCard = new PopupWithForm ({
 });
 const popupEditProfile = new PopupWithForm ({
   popupSelector: popupEditFormSelector,
-  handleFormSubmit: () => {
+  handleFormSubmit: (inputsValues) => {
     popupEditProfile.close();
-    profileTitle.textContent = inputTypeUsername.value;
-    profileSubtitle.textContent = inputTypeAbout.value;
+    userInfo.setUserInfo(inputsValues);
   }
 });
 const popupWithImage = new PopupWithImage (popupWithImageFormSelector);
@@ -55,8 +57,8 @@ const createCard = (data, templateSelector) => {
   return card.generateCard();
 };
 const openEditProfilePopup = () => {
-  inputTypeUsername.value = profileTitle.textContent;
-  inputTypeAbout.value = profileSubtitle.textContent;
+  inputTypeUsername.value = userInfo.getUserInfo().userName;
+  inputTypeAbout.value = userInfo.getUserInfo().aboutUser;
   formEditValidator.clearInputErrors();
   popupEditProfile.open();
 };

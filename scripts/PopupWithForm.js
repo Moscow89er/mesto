@@ -2,6 +2,7 @@ import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup {
     constructor ({ popupSelector, handleFormSubmit }) {
         super(popupSelector);
+        this._form = this._popup.querySelector('.popup__form');
         this._handleFormSubmit = handleFormSubmit;
     };
     _getInputValues () {
@@ -17,14 +18,10 @@ export default class PopupWithForm extends Popup {
             evt.preventDefault();
             this._handleFormSubmit(this._getInputValues());
         });
-        this._buttonTypeClose.addEventListener('click', () => {
-            this.close();
-        });
-        this._popup.addEventListener('mousedown', this._handleClosePopupByOverlay);
+        super.setEventListeners();
     };
     close () {
-        document.removeEventListener('keydown', this._handleEscClose);
-        this._popup.classList.remove('popup_opened');
-        addForm.reset();
+        this._form.reset();
+        super.close();
     };
 };
