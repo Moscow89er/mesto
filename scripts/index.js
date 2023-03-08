@@ -63,7 +63,6 @@ const openEditProfilePopup = () => {
   popupEditProfile.open();
 };
 const openAddCardForm = () => {
-  //addForm.reset();
   formAddValidator.clearInputErrors();
   popupAddCard.open();
 };
