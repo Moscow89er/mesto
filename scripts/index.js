@@ -26,7 +26,15 @@ const userInfo = new UserInfo ({
 const cardList = new Section ({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card (item, '.card_type_default');
+    console.log(item);
+    const card = new Card ({
+      item: item,
+      /*handleCardClick: () => {
+        card.addEventListener('click', () => {
+          console.log('привет');
+        });
+      }*/
+    }, '.card_type_default');
     const sectionElement = card.generateCard();
     cardList.addItem(sectionElement);
   }
