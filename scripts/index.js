@@ -5,19 +5,18 @@ import {
   buttonOpenAddCardForm,
   inputTypeAbout,
   inputTypeUsername,
-  cardsContainer,
   popupAddFormSelector,
   popupEditFormSelector,
   popupWithImageFormSelector,
   inputTypeCardName,
   inputTypeCardLink,
-  validationConfig,
+  validationConfig
 } from './constants.js';
 import PopupWithImage from './PopupWithImage.js';
 import Card from './Card.js';
 import Section from './Section.js';
 import PopupWithForm from './PopupWithForm.js';
-import { FormValidator } from './FormValidator.js';
+import FormValidator from './FormValidator.js';
 import UserInfo from './UserInfo.js'; 
 const userInfo = new UserInfo ({
   aboutUserSelector: '.profile__subtitle',
@@ -26,17 +25,7 @@ const userInfo = new UserInfo ({
 const cardList = new Section ({
   items: initialCards,
   renderer: (item) => {
-    console.log(item);
-    const card = new Card ({
-      item: item,
-      /*handleCardClick: () => {
-        card.addEventListener('click', () => {
-          console.log('привет');
-        });
-      }*/
-    }, '.card_type_default');
-    const sectionElement = card.generateCard();
-    cardList.addItem(sectionElement);
+    cardList.addItem(createCard(item));
   }
 }, cardsContainerSelector);
 const popupAddCard = new PopupWithForm ({
@@ -46,7 +35,7 @@ const popupAddCard = new PopupWithForm ({
       name: inputTypeCardName.value,
       link: inputTypeCardLink.value
     };
-    cardsContainer.prepend(createCard(newCard, '.card_type_default'));
+    cardList.addItem(createCard(newCard));
     popupAddCard.close();
   }
 });
@@ -60,8 +49,13 @@ const popupEditProfile = new PopupWithForm ({
 const popupWithImage = new PopupWithImage (popupWithImageFormSelector);
 const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
 const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
-const createCard = (data, templateSelector) => {
-  const card = new Card(data, templateSelector);
+const createCard = (inputValues) => {
+  const card = new Card({
+    data: inputValues,
+    handleCardClick: (name, link) => {
+      popupWithImage.open(name, link);
+    }
+  }, '.card_type_default');
   return card.generateCard();
 };
 const openEditProfilePopup = () => {

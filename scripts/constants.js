@@ -40,12 +40,9 @@ const inputTypeUsername = document.querySelector('.popup__input_type_username');
 const popupAddFormSelector = '.popup_add_form';
 const popupEditFormSelector = '.popup_edit_form';
 const popupWithImageFormSelector = '.popup_picture';
-const buttonTypeClose = document.querySelectorAll('.popup__close-button');
 const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
 const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
-const cardsContainer = document.querySelector('.cards');
 const cardsContainerSelector = '.cards';
-const popupList = document.querySelectorAll('.popup');
 export { 
   initialCards,
   validationConfig,
@@ -56,10 +53,7 @@ export {
   popupAddFormSelector,
   popupEditFormSelector,
   popupWithImageFormSelector,
-  buttonTypeClose,
   inputTypeCardName,
   inputTypeCardLink,
-  cardsContainer,
   cardsContainerSelector,
-  popupList
 };
