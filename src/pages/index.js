@@ -1,5 +1,5 @@
-//import './pages/index.css';
-import { 
+import './index.css';
+import {
   initialCards,
   cardsContainerSelector,
   buttonOpenEditProfileForm,
