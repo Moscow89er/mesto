@@ -1,24 +1,21 @@
 import './index.css';
-import {
-  initialCards,
-  cardsContainerSelector,
-  buttonOpenEditProfileForm,
-  buttonOpenAddCardForm,
-  inputTypeAbout,
-  inputTypeUsername,
-  popupAddFormSelector,
-  popupEditFormSelector,
-  popupWithImageFormSelector,
-  inputTypeCardName,
-  inputTypeCardLink,
-  validationConfig
-} from '../utils/constants.js';
+import { initialCards, validationConfig } from '../utils/constants.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Card from '../components/Card.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import FormValidator from '../components/FormValidator.js';
 import UserInfo from '../components/UserInfo.js'; 
+const buttonOpenEditProfileForm = document.querySelector('.profile__edit-button');
+const buttonOpenAddCardForm = document.querySelector('.profile__add-button');
+const inputTypeAbout = document.querySelector('.popup__input_type_about');
+const inputTypeUsername = document.querySelector('.popup__input_type_username');
+const popupAddFormSelector = '.popup_add_form';
+const popupEditFormSelector = '.popup_edit_form';
+const popupWithImageFormSelector = '.popup_picture';
+const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
+const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
+const cardsContainerSelector = '.cards';
 const userInfo = new UserInfo ({
   aboutUserSelector: '.profile__subtitle',
   userNameSelector: '.profile__title'
@@ -60,8 +57,9 @@ const createCard = (inputValues) => {
   return card.generateCard();
 };
 const openEditProfilePopup = () => {
-  inputTypeUsername.value = userInfo.getUserInfo().userName;
-  inputTypeAbout.value = userInfo.getUserInfo().aboutUser;
+  const userInfoData =  userInfo.getUserInfo();
+  inputTypeUsername.value = userInfoData.userName;
+  inputTypeAbout.value = userInfoData.aboutUser;
   formEditValidator.clearInputErrors();
   popupEditProfile.open();
 };
