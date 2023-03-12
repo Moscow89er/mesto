@@ -74,4 +74,4 @@ formEditValidator.enableValidation();
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
 popupWithImage.setEventListeners();
-cardList.renderItems();
+cardList.renderItems(initialCards);
