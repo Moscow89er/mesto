@@ -33,27 +33,4 @@ const validationConfig = {
   inputClassError: 'popup__input_type_error',
   formClassError: 'popup__form-error_active',
 };
-const buttonOpenEditProfileForm = document.querySelector('.profile__edit-button');
-const buttonOpenAddCardForm = document.querySelector('.profile__add-button');
-const inputTypeAbout = document.querySelector('.popup__input_type_about');
-const inputTypeUsername = document.querySelector('.popup__input_type_username');
-const popupAddFormSelector = '.popup_add_form';
-const popupEditFormSelector = '.popup_edit_form';
-const popupWithImageFormSelector = '.popup_picture';
-const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
-const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
-const cardsContainerSelector = '.cards';
-export { 
-  initialCards,
-  validationConfig,
-  buttonOpenEditProfileForm,
-  buttonOpenAddCardForm,
-  inputTypeAbout,
-  inputTypeUsername,
-  popupAddFormSelector,
-  popupEditFormSelector,
-  popupWithImageFormSelector,
-  inputTypeCardName,
-  inputTypeCardLink,
-  cardsContainerSelector,
-};
+export { initialCards, validationConfig };

@@ -5,7 +5,8 @@ import Card from '../components/Card.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import FormValidator from '../components/FormValidator.js';
-import UserInfo from '../components/UserInfo.js'; 
+import UserInfo from '../components/UserInfo.js';
+import Popup from '../components/Popup.js';
 const buttonOpenEditProfileForm = document.querySelector('.profile__edit-button');
 const buttonOpenAddCardForm = document.querySelector('.profile__add-button');
 const inputTypeAbout = document.querySelector('.popup__input_type_about');
@@ -16,6 +17,9 @@ const popupWithImageFormSelector = '.popup_picture';
 const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
 const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
 const cardsContainerSelector = '.cards';
+
+const popupConfirmDelitionSelector = '.popup_confirm';
+
 const userInfo = new UserInfo ({
   aboutUserSelector: '.profile__subtitle',
   userNameSelector: '.profile__title'
@@ -45,6 +49,11 @@ const popupEditProfile = new PopupWithForm ({
   }
 });
 const popupWithImage = new PopupWithImage (popupWithImageFormSelector);
+
+
+const popupConfirmDelition = new Popup (popupConfirmDelitionSelector);
+
+
 const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
 const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
 const createCard = (inputValues) => {
@@ -52,6 +61,12 @@ const createCard = (inputValues) => {
     data: inputValues,
     handleCardClick: (name, link) => {
       popupWithImage.open(name, link);
+    },
+    handleDeleteButtonClick: () => {
+      popupConfirmDelition.open();
+    },
+    handleClosePopupWithConfirmButton: () => {
+      popupConfirmDelition.close();
     }
   }, '.card_type_default');
   return card.generateCard();
@@ -67,6 +82,7 @@ const openAddCardForm = () => {
   formAddValidator.clearInputErrors();
   popupAddCard.open();
 };
+
 buttonOpenEditProfileForm.addEventListener('click', openEditProfilePopup);
 buttonOpenAddCardForm.addEventListener('click', openAddCardForm);
 formAddValidator.enableValidation();
@@ -74,4 +90,5 @@ formEditValidator.enableValidation();
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
 popupWithImage.setEventListeners();
+popupConfirmDelition.setEventListeners();
 cardList.renderItems(initialCards);

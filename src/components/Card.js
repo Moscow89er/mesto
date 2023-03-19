@@ -1,8 +1,10 @@
 export default class Card {
-    constructor({ data, handleCardClick }, templateSelector) {
+    constructor({ data, handleCardClick, handleDeleteButtonClick, handleClosePopupWithConfirmButton }, templateSelector) {
       this._name = data.name;
       this._link = data.link;
       this._handleCardClick = handleCardClick;
+      this._handleDeleteButtonClick = handleDeleteButtonClick;
+      this._handleClosePopupWithConfirmButton = handleClosePopupWithConfirmButton;
       this._templateSelector = templateSelector;
     };
     _getTemplate() {
@@ -27,11 +29,20 @@ export default class Card {
         this._likeCard();
       });
       this._buttonDelete.addEventListener('click', () => {
-        this._deleteCard();
+        /*this._deleteCard();*/
+        this._handleDeleteButtonClick();
+        document.querySelector('.popup__confirm-button').addEventListener('click', () => {
+          this._deleteCard();
+          this._handleClosePopupWithConfirmButton();
+        });
       });
       this._cardImage.addEventListener('click', () => {
         this._handleCardClick(this._name, this._link);
       });
+      /*document.querySelector('.popup__confirm-button').addEventListener('click', () => {
+        this._deleteCard();
+        this._handleClosePopupWithConfirmButton();
+      });*/
     };
     _likeCard() {
       this._buttonLike.classList.toggle('card__like-button_active');
