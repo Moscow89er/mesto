@@ -17,9 +17,7 @@ const popupWithImageFormSelector = '.popup_picture';
 const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
 const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
 const cardsContainerSelector = '.cards';
-
-const popupConfirmDelitionSelector = '.popup_confirm';
-
+const popupWithConfirmButtonSelector = '.popup_confirm';
 const userInfo = new UserInfo ({
   aboutUserSelector: '.profile__subtitle',
   userNameSelector: '.profile__title'
@@ -49,11 +47,7 @@ const popupEditProfile = new PopupWithForm ({
   }
 });
 const popupWithImage = new PopupWithImage (popupWithImageFormSelector);
-
-
-const popupConfirmDelition = new Popup (popupConfirmDelitionSelector);
-
-
+const popupWithConfirmButton = new Popup (popupWithConfirmButtonSelector);
 const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
 const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
 const createCard = (inputValues) => {
@@ -62,11 +56,11 @@ const createCard = (inputValues) => {
     handleCardClick: (name, link) => {
       popupWithImage.open(name, link);
     },
-    handleDeleteButtonClick: () => {
-      popupConfirmDelition.open();
+    handleOpenPopupWithConfirmButton: () => {
+      popupWithConfirmButton.open();
     },
     handleClosePopupWithConfirmButton: () => {
-      popupConfirmDelition.close();
+      popupWithConfirmButton.close();
     }
   }, '.card_type_default');
   return card.generateCard();
@@ -82,7 +76,6 @@ const openAddCardForm = () => {
   formAddValidator.clearInputErrors();
   popupAddCard.open();
 };
-
 buttonOpenEditProfileForm.addEventListener('click', openEditProfilePopup);
 buttonOpenAddCardForm.addEventListener('click', openAddCardForm);
 formAddValidator.enableValidation();
@@ -90,5 +83,5 @@ formEditValidator.enableValidation();
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
 popupWithImage.setEventListeners();
-popupConfirmDelition.setEventListeners();
+popupWithConfirmButton.setEventListeners();
 cardList.renderItems(initialCards);
