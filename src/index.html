@@ -14,7 +14,7 @@
         <section class="profile">
             <div class="profile__container">
                 <img class="profile__avatar" src="<%=require('./images/profile_kusto.jpg')%>" alt="аватар">
-                <div class="profile__overlay"></div>
+                <button type="button" class="profile__avatar-button"></div>
             </div>
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button type="button" class="profile__edit-button"></button>
@@ -59,6 +59,17 @@
                 <input id="cardlink" type="url" name="cardlink" placeholder="Ссылка на картинку" class="popup__input popup__input_type_cardlink" required>
                 <span class="cardlink-error popup__form-error"></span>
                 <button type="submit" class="popup__save-button">Создать</button>
+            </form>
+            <button type="button" class="popup__close-button"></button>
+        </div>
+    </section>
+    <section class="popup popup_update_avatar">
+        <div class="popup__container-avatar">
+            <h3 class="popup__title-avatar">Обновить аватар</h3>
+            <form name="avatarForm" class="popup__form popup__form-avatar" novalidate>
+                <input id="avatarlink" type="url" name="avatarlink" placeholder="Ссылка на аватар" class="popup__input popup__input_type_avatarlink" required>
+                <span class="cardname-error popup__form-error"></span>
+                <button type="submit" class="popup__save-button">Сохранить</button>
             </form>
             <button type="button" class="popup__close-button"></button>
         </div>

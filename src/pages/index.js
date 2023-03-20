@@ -16,8 +16,10 @@ const popupEditFormSelector = '.popup_edit_form';
 const popupWithImageFormSelector = '.popup_picture';
 const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
 const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
+const buttonOpenPopupWithAvatar = document.querySelector('.profile__avatar-button');
 const cardsContainerSelector = '.cards';
 const popupWithConfirmButtonSelector = '.popup_confirm';
+const popupWithAvatarSelector = '.popup_update_avatar';
 const userInfo = new UserInfo ({
   aboutUserSelector: '.profile__subtitle',
   userNameSelector: '.profile__title'
@@ -48,6 +50,7 @@ const popupEditProfile = new PopupWithForm ({
 });
 const popupWithImage = new PopupWithImage (popupWithImageFormSelector);
 const popupWithConfirmButton = new Popup (popupWithConfirmButtonSelector);
+const popupWithAvatar = new Popup(popupWithAvatarSelector);
 const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
 const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
 const createCard = (inputValues) => {
@@ -78,10 +81,15 @@ const openAddCardForm = () => {
 };
 buttonOpenEditProfileForm.addEventListener('click', openEditProfilePopup);
 buttonOpenAddCardForm.addEventListener('click', openAddCardForm);
+buttonOpenPopupWithAvatar.addEventListener('click', () => {
+  popupWithAvatar.open();
+});
 formAddValidator.enableValidation();
 formEditValidator.enableValidation();
+//popupWithAvatar.enableValidation();
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
 popupWithImage.setEventListeners();
 popupWithConfirmButton.setEventListeners();
+popupWithAvatar.setEventListeners();
 cardList.renderItems(initialCards);

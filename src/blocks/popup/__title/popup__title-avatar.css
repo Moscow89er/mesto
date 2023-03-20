@@ -1,12 +1,13 @@
-.popup__title-confirm {
+.popup__title-avatar {
     max-width: 358px;
-    margin: 0 0 38px;
+    margin: 0 0 48px;
     font-weight: 900;
     font-size: 24px;
     line-height: 29px;
 }
 @media (max-width: 696px) {
-    .popup__title-confirm {
+    .popup__title-avatar {
+        margin: 0 22px;
         max-width: 238px;
         font-size: 18px;
         line-height: 22px;
