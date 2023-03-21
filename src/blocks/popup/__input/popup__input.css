@@ -32,12 +32,9 @@
 }
 @media (max-width: 696px) {
     .popup__input {
-        margin: 30px 20px;
+        margin: 20px auto;
         width: 236px;
         font-size: 14px;
         line-height: 17px;
-    }
-    .popup__input:first-of-type {
-        margin: 48px 20px 0;
     }
 }

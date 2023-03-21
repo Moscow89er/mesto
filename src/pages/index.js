@@ -48,11 +48,22 @@ const popupEditProfile = new PopupWithForm ({
     userInfo.setUserInfo(inputsValues);
   }
 });
+
+const popupWithAvatar = new PopupWithForm ({
+  popupSelector: popupWithAvatarSelector,
+  handleFormSubmit: () => {
+    popupWithAvatar.close();
+  }
+});
+
 const popupWithImage = new PopupWithImage (popupWithImageFormSelector);
 const popupWithConfirmButton = new Popup (popupWithConfirmButtonSelector);
-const popupWithAvatar = new Popup(popupWithAvatarSelector);
 const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
 const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
+
+const formAvatarValidator = new FormValidator(validationConfig, '.popup__form-avatar');
+
+
 const createCard = (inputValues) => {
   const card = new Card({
     data: inputValues,
@@ -86,7 +97,7 @@ buttonOpenPopupWithAvatar.addEventListener('click', () => {
 });
 formAddValidator.enableValidation();
 formEditValidator.enableValidation();
-//popupWithAvatar.enableValidation();
+formAvatarValidator.enableValidation();
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
 popupWithImage.setEventListeners();

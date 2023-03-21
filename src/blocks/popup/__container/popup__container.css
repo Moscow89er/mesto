@@ -13,7 +13,7 @@
 @media (max-width: 696px) {
     .popup__container {
         padding: 0;
-        width: 282px;
-        height: 322px;
+        min-width: 282px;
+        min-height: 322px;
     }
 }
