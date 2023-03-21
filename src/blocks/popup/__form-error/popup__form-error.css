@@ -25,10 +25,10 @@
         font-size: 9px;
         line-height: 12px;
         width: 240px;
-        top: 166px;
+        top: 188px;
         margin-left: 20px;
     }
     .popup__form-error:first-of-type {
-        top: 116px;
+        top: 128px;
     }
 }

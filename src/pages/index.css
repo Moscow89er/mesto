@@ -37,3 +37,5 @@
 @import url(../blocks/profile/__container/profile__container.css);
 @import url(../blocks/popup/__container/popup__container-avatar.css);
 @import url(../blocks/popup/__title/popup__title-avatar.css);
+@import url(../blocks/card/__like-number/card__like-number.css);
+@import url(../blocks/card/__like-group/card__like-group.css);

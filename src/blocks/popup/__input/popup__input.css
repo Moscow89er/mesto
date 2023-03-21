@@ -32,7 +32,7 @@
 }
 @media (max-width: 696px) {
     .popup__input {
-        margin: 20px auto;
+        margin: 30px auto;
         width: 236px;
         font-size: 14px;
         line-height: 17px;

@@ -20,6 +20,8 @@ const buttonOpenPopupWithAvatar = document.querySelector('.profile__avatar-butto
 const cardsContainerSelector = '.cards';
 const popupWithConfirmButtonSelector = '.popup_confirm';
 const popupWithAvatarSelector = '.popup_update_avatar';
+const profileAvatarLink = document.querySelector('.profile__avatar');
+const inputTypeAvatarLink = document.querySelector('.popup__input_type_avatarlink');
 const userInfo = new UserInfo ({
   aboutUserSelector: '.profile__subtitle',
   userNameSelector: '.profile__title'
@@ -48,22 +50,18 @@ const popupEditProfile = new PopupWithForm ({
     userInfo.setUserInfo(inputsValues);
   }
 });
-
 const popupWithAvatar = new PopupWithForm ({
   popupSelector: popupWithAvatarSelector,
   handleFormSubmit: () => {
+    profileAvatarLink.src = inputTypeAvatarLink.value;
     popupWithAvatar.close();
   }
 });
-
 const popupWithImage = new PopupWithImage (popupWithImageFormSelector);
 const popupWithConfirmButton = new Popup (popupWithConfirmButtonSelector);
 const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
 const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
-
 const formAvatarValidator = new FormValidator(validationConfig, '.popup__form-avatar');
-
-
 const createCard = (inputValues) => {
   const card = new Card({
     data: inputValues,
@@ -90,11 +88,14 @@ const openAddCardForm = () => {
   formAddValidator.clearInputErrors();
   popupAddCard.open();
 };
+const openEditAvatarPopup = () => {
+  inputTypeAvatarLink.value = profileAvatarLink.src;
+  formAvatarValidator.clearInputErrors();
+  popupWithAvatar.open();
+};
 buttonOpenEditProfileForm.addEventListener('click', openEditProfilePopup);
 buttonOpenAddCardForm.addEventListener('click', openAddCardForm);
-buttonOpenPopupWithAvatar.addEventListener('click', () => {
-  popupWithAvatar.open();
-});
+buttonOpenPopupWithAvatar.addEventListener('click', openEditAvatarPopup);
 formAddValidator.enableValidation();
 formEditValidator.enableValidation();
 formAvatarValidator.enableValidation();

@@ -18,6 +18,7 @@ export default class Card {
       this._cardTitle = this._card.querySelector('.card__title');
       this._buttonDelete = this._card.querySelector('.card__delete-button');
       this._buttonLike = this._card.querySelector('.card__like-button');
+      this._likeNumber = this._card.querySelector('.card__like-number');
       this._setEventListeners();
       this._cardTitle.textContent = this._name;
       this._cardImage.alt = this._name;
