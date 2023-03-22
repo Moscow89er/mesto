@@ -6,7 +6,9 @@ import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import FormValidator from '../components/FormValidator.js';
 import UserInfo from '../components/UserInfo.js';
-import Popup from '../components/Popup.js';
+import PopupWithConfirmButton from '../components/PopupWithConfirmButton.js';
+import Api from '../components/Api.js';
+
 const buttonOpenEditProfileForm = document.querySelector('.profile__edit-button');
 const buttonOpenAddCardForm = document.querySelector('.profile__add-button');
 const inputTypeAbout = document.querySelector('.popup__input_type_about');
@@ -22,12 +24,21 @@ const popupWithConfirmButtonSelector = '.popup_confirm';
 const popupWithAvatarSelector = '.popup_update_avatar';
 const profileAvatarLink = document.querySelector('.profile__avatar');
 const inputTypeAvatarLink = document.querySelector('.popup__input_type_avatarlink');
+
+const api = new Api ({
+  url: 'https://mesto.nomoreparties.co/v1/cohort-62',
+  headers: {
+    authorization: 'f222d885-e074-4ace-9dec-53e306a04a75',
+    'Content-Type': 'application/json'
+  }
+});
+
 const userInfo = new UserInfo ({
   aboutUserSelector: '.profile__subtitle',
   userNameSelector: '.profile__title'
 });
 const cardList = new Section ({
-  items: initialCards,
+  //items: initialCards,
   renderer: (item) => {
     cardList.addItem(createCard(item));
   }
@@ -57,8 +68,8 @@ const popupWithAvatar = new PopupWithForm ({
     popupWithAvatar.close();
   }
 });
+const popupWithConfirmButton = new PopupWithConfirmButton (popupWithConfirmButtonSelector);
 const popupWithImage = new PopupWithImage (popupWithImageFormSelector);
-const popupWithConfirmButton = new Popup (popupWithConfirmButtonSelector);
 const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
 const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
 const formAvatarValidator = new FormValidator(validationConfig, '.popup__form-avatar');
@@ -104,4 +115,9 @@ popupAddCard.setEventListeners();
 popupWithImage.setEventListeners();
 popupWithConfirmButton.setEventListeners();
 popupWithAvatar.setEventListeners();
-cardList.renderItems(initialCards);
+//cardList.renderItems(initialCards);
+
+api.getData()
+  .then(([cards]) => {
+    cardList.renderItems(cards);
+  })
