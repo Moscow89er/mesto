@@ -57,9 +57,12 @@ const popupAddCard = new PopupWithForm ({
 });
 const popupEditProfile = new PopupWithForm ({
   popupSelector: popupEditFormSelector,
-  handleFormSubmit: (inputsValues) => {
-    popupEditProfile.close();
-    userInfo.setUserInfo(inputsValues);
+  handleFormSubmit: (newData) => {
+    api.editUserInfo(newData)
+    .then((data) => {
+      popupEditProfile.close();
+      userInfo.setUserInfo(data);
+    });
   }
 });
 const popupWithAvatar = new PopupWithForm ({
@@ -122,6 +125,8 @@ cardList.renderItems(initialCards);
 
 api.getData()
   .then(([cards, userData]) => {
+
+    console.log(userData);
     userInfo.setUserInfo(userData);
     
     cardList.renderItems(cards);

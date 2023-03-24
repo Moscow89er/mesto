@@ -30,7 +30,7 @@ export default class Api {
         });
     };
     
-    /*editUserInfo (userData) {
+    editUserInfo (userData) {
         return fetch(this._url + '/users/me', {
             method: 'PATCH',
             headers: this._headers,
@@ -45,7 +45,7 @@ export default class Api {
             }
         return Promise.reject(`Ошибка: ${res.status}`);
         });
-    };*/
+    };
 
     /*addNewCard (data) {
         return fetch(this._url + '/cards', {
