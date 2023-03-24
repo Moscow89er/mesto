@@ -1,10 +1,12 @@
 export default class Card {
-    constructor({ data, handleCardClick, handleOpenPopupWithConfirmButton, handleClosePopupWithConfirmButton }, templateSelector) {
+    constructor({ data, handleCardClick, handleOpenPopupWithConfirmButton, handleClosePopupWithConfirmButton }, /*api,*/ templateSelector) {
       this._name = data.name;
       this._link = data.link;
+      //this._like = data.like;
       this._handleCardClick = handleCardClick;
       this._handleOpenPopupWithConfirmButton = handleOpenPopupWithConfirmButton;
       this._handleClosePopupWithConfirmButton = handleClosePopupWithConfirmButton;
+      //this._api = api;
       this._templateSelector = templateSelector;
     };
     _getTemplate() {

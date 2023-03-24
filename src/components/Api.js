@@ -30,8 +30,42 @@ export default class Api {
         });
     };
     
+    /*editUserInfo (userData) {
+        return fetch(this._url + '/users/me', {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                name: userData.username,
+                about: userData.about
+            })
+        })
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+        return Promise.reject(`Ошибка: ${res.status}`);
+        });
+    };*/
+
+    /*addNewCard (data) {
+        return fetch(this._url + '/cards', {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({
+                name: data.name,
+                link: data.link
+            })
+        })
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+        return Promise.reject(`Ошибка: ${res.status}`);
+        });
+    };*/
+
+
     getData() {
-        return Promise.all([this.getInitialCards()]);
-    }
-    // другие методы работы с API
+        return Promise.all([this.getInitialCards(), this.getUserInfo()]);
+    };
   };

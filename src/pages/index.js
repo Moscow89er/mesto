@@ -35,10 +35,11 @@ const api = new Api ({
 
 const userInfo = new UserInfo ({
   aboutUserSelector: '.profile__subtitle',
-  userNameSelector: '.profile__title'
+  userNameSelector: '.profile__title',
+  userAvatarSelector: '.profile__avatar'
 });
 const cardList = new Section ({
-  //items: initialCards,
+  items: initialCards,
   renderer: (item) => {
     cardList.addItem(createCard(item));
   }
@@ -115,9 +116,13 @@ popupAddCard.setEventListeners();
 popupWithImage.setEventListeners();
 popupWithConfirmButton.setEventListeners();
 popupWithAvatar.setEventListeners();
-//cardList.renderItems(initialCards);
+cardList.renderItems(initialCards);
+
+
 
 api.getData()
-  .then(([cards]) => {
+  .then(([cards, userData]) => {
+    userInfo.setUserInfo(userData);
+    
     cardList.renderItems(cards);
-  })
+  });
