@@ -16,14 +16,15 @@ const inputTypeUsername = document.querySelector('.popup__input_type_username');
 const popupAddFormSelector = '.popup_add_form';
 const popupEditFormSelector = '.popup_edit_form';
 const popupWithImageFormSelector = '.popup_picture';
-const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
-const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
+//const inputTypeCardName = document.querySelector('.popup__input_type_cardname');
+//const inputTypeCardLink = document.querySelector('.popup__input_type_cardlink');
 const buttonOpenPopupWithAvatar = document.querySelector('.profile__avatar-button');
 const cardsContainerSelector = '.cards';
 const popupWithConfirmButtonSelector = '.popup_confirm';
 const popupWithAvatarSelector = '.popup_update_avatar';
 const profileAvatarLink = document.querySelector('.profile__avatar');
 const inputTypeAvatarLink = document.querySelector('.popup__input_type_avatarlink');
+let userId;
 
 const api = new Api ({
   url: 'https://mesto.nomoreparties.co/v1/cohort-62',
@@ -83,19 +84,25 @@ const popupWithImage = new PopupWithImage (popupWithImageFormSelector);
 const formAddValidator = new FormValidator(validationConfig, '.popup__form-add');
 const formEditValidator = new FormValidator(validationConfig, '.popup__form-edit');
 const formAvatarValidator = new FormValidator(validationConfig, '.popup__form-avatar');
-const createCard = (inputValues) => {
+const createCard = (data) => {
   const card = new Card({
-    data: inputValues,
+    data: data,
     handleCardClick: (name, link) => {
       popupWithImage.open(name, link);
     },
     handleLikeClick: () => {
-      //popupWithConfirmButton.open();
+      
     },
     handleDeleteIconClick: () => {
-      //popupWithConfirmButton.close();
+      
+    },
+    handleOpenPopupWithConfirmButton: () => {
+      popupWithConfirmButton.open();
+    },
+    handleClosePopupWithConfirmButton: () => {
+      popupWithConfirmButton.close();
     }
-  }, api, '.card_type_default');
+  }, api, userId, '.card_type_default');
   return card.generateCard();
 };
 const openEditProfilePopup = () => {
@@ -125,13 +132,13 @@ popupAddCard.setEventListeners();
 popupWithImage.setEventListeners();
 popupWithConfirmButton.setEventListeners();
 popupWithAvatar.setEventListeners();
-cardList.renderItems(initialCards);
-
-
+//cardList.renderItems(initialCards);
 
 api.getData()
   .then(([cards, userData]) => {
     userInfo.setUserInfo(userData);
-    
+    userId = userData._id;
+
     cardList.renderItems(cards);
-  });
+  })
+  .catch((err) => console.log(err));
