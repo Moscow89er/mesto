@@ -60,16 +60,21 @@ const popupEditProfile = new PopupWithForm ({
   handleFormSubmit: (newData) => {
     api.editUserInfo(newData)
     .then((data) => {
-      popupEditProfile.close();
       userInfo.setUserInfo(data);
-    });
+      popupEditProfile.close();
+    })
+    .catch((err) => console.log(err));
   }
 });
 const popupWithAvatar = new PopupWithForm ({
   popupSelector: popupWithAvatarSelector,
-  handleFormSubmit: () => {
-    profileAvatarLink.src = inputTypeAvatarLink.value;
-    popupWithAvatar.close();
+  handleFormSubmit: (newData) => {
+    api.editUserAvatar(newData)
+    .then((data) => {
+      userInfo.setUserAvatar(data);
+      popupWithAvatar.close();
+    })
+    .catch((err) => console.log(err));
   }
 });
 const popupWithConfirmButton = new PopupWithConfirmButton (popupWithConfirmButtonSelector);
@@ -125,8 +130,6 @@ cardList.renderItems(initialCards);
 
 api.getData()
   .then(([cards, userData]) => {
-
-    console.log(userData);
     userInfo.setUserInfo(userData);
     
     cardList.renderItems(cards);
