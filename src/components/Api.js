@@ -63,13 +63,13 @@ export default class Api {
         });
     };
 
-    /*addNewCard (data) {
+    addNewCard (data) {
         return fetch(this._url + '/cards', {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
-                name: data.name,
-                link: data.link
+                name: data.cardname,
+                link: data.cardlink
             })
         })
         .then(res => {
@@ -78,7 +78,7 @@ export default class Api {
             }
         return Promise.reject(`Ошибка: ${res.status}`);
         });
-    };*/
+    };
 
 
     getData() {

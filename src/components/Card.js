@@ -1,12 +1,12 @@
 export default class Card {
-    constructor({ data, handleCardClick, handleOpenPopupWithConfirmButton, handleClosePopupWithConfirmButton }, /*api,*/ templateSelector) {
+    constructor({ data, handleCardClick, handleLikeClick, handleDeleteIconClick }, api, templateSelector) {
       this._name = data.name;
       this._link = data.link;
-      //this._like = data.like;
+      this._like = data.like;
       this._handleCardClick = handleCardClick;
-      this._handleOpenPopupWithConfirmButton = handleOpenPopupWithConfirmButton;
-      this._handleClosePopupWithConfirmButton = handleClosePopupWithConfirmButton;
-      //this._api = api;
+      this._handleLikeClick = handleLikeClick;
+      this._handleDeleteIconClick = handleDeleteIconClick;
+      this._api = api;
       this._templateSelector = templateSelector;
     };
     _getTemplate() {
@@ -32,8 +32,8 @@ export default class Card {
         this._likeCard();
       });
       this._buttonDelete.addEventListener('click', () => {
-        this._handleOpenPopupWithConfirmButton();
-        this._confirmButtonListener();
+        /*this._handleOpenPopupWithConfirmButton();
+        this._confirmButtonListener();*/
       });
       this._cardImage.addEventListener('click', () => {
         this._handleCardClick(this._name, this._link);
@@ -46,10 +46,10 @@ export default class Card {
       this._cardContainer.remove();
       this._card = null;
     };
-    _confirmButtonListener() {
+    /*_confirmButtonListener() {
       document.querySelector('.popup__confirm-button').addEventListener('click', () => {
         this._deleteCard();
         this._handleClosePopupWithConfirmButton();
       });
-    };
+    };*/
 };

@@ -46,13 +46,14 @@ const cardList = new Section ({
 }, cardsContainerSelector);
 const popupAddCard = new PopupWithForm ({
   popupSelector: popupAddFormSelector,
-  handleFormSubmit: () => {
-    const newCard = {
-      name: inputTypeCardName.value,
-      link: inputTypeCardLink.value
-    };
-    cardList.addItem(createCard(newCard));
-    popupAddCard.close();
+  handleFormSubmit: (newData) => {
+    console.log(newData);
+    api.addNewCard(newData)
+    .then((data) =>{
+      cardList.addItem(createCard(data));
+      popupAddCard.close();
+    })
+    .catch((err) => console.log(err));
   }
 });
 const popupEditProfile = new PopupWithForm ({
@@ -88,13 +89,13 @@ const createCard = (inputValues) => {
     handleCardClick: (name, link) => {
       popupWithImage.open(name, link);
     },
-    handleOpenPopupWithConfirmButton: () => {
-      popupWithConfirmButton.open();
+    handleLikeClick: () => {
+      //popupWithConfirmButton.open();
     },
-    handleClosePopupWithConfirmButton: () => {
-      popupWithConfirmButton.close();
+    handleDeleteIconClick: () => {
+      //popupWithConfirmButton.close();
     }
-  }, '.card_type_default');
+  }, api, '.card_type_default');
   return card.generateCard();
 };
 const openEditProfilePopup = () => {
