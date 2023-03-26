@@ -94,10 +94,16 @@ const createCard = (data) => {
       
     },
     handleDeleteIconClick: () => {
-      
-    },
-    handleOpenPopupWithConfirmButton: () => {
-      popupWithConfirmButton.open();
+      api.deleteCard(data._id)
+        .then(() => {
+          popupWithConfirmButton.open();
+        })
+        .then(() => {
+          document.querySelector('.popup__confirm-button').addEventListener('click', () => {
+            card.deleteCard();
+            popupWithConfirmButton.close();
+        });
+      })
     },
     handleClosePopupWithConfirmButton: () => {
       popupWithConfirmButton.close();

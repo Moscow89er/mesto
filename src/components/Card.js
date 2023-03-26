@@ -1,5 +1,5 @@
 export default class Card {
-    constructor({ data, handleCardClick, handleLikeClick, handleDeleteIconClick, handleOpenPopupWithConfirmButton, handleClosePopupWithConfirmButton }, api, userId, templateSelector) {
+    constructor({ data, handleCardClick, handleLikeClick, handleDeleteIconClick }, api, userId, templateSelector) {
       this._name = data.name;
       this._link = data.link;
       this._likes = data.likes;
@@ -8,8 +8,6 @@ export default class Card {
       this._handleCardClick = handleCardClick;
       this._handleLikeClick = handleLikeClick;
       this._handleDeleteIconClick = handleDeleteIconClick;
-      this._handleOpenPopupWithConfirmButton = handleOpenPopupWithConfirmButton;
-      this._handleClosePopupWithConfirmButton = handleClosePopupWithConfirmButton;
       this._api = api;
       this._userId = userId;
       this._templateSelector = templateSelector;
@@ -32,14 +30,9 @@ export default class Card {
       this._cardImage.src = this._link;
       this._likesNumber.textContent = this._likes.length;
 
-      if ((this._userId === this._ownerId)) {
-        this._buttonDelete.addEventListener('click', () => {
-          this._handleOpenPopupWithConfirmButton();
-          this._confirmButtonListener();
-        })
-      } else {
+      if (!(this._userId === this._ownerId)) {
         this._buttonDelete.remove();
-      };
+      }
 
       return this._card;
     };
@@ -47,10 +40,9 @@ export default class Card {
       this._buttonLike.addEventListener('click', () => {
         this._likeCard();
       });
-      /*this._buttonDelete.addEventListener('click', () => {
-        this._handleOpenPopupWithConfirmButton();
-        this._confirmButtonListener();
-      });*/
+      this._buttonDelete.addEventListener('click', () => {
+        this._handleDeleteIconClick();
+      });
       this._cardImage.addEventListener('click', () => {
         this._handleCardClick(this._name, this._link);
       });
@@ -58,14 +50,8 @@ export default class Card {
     _likeCard() {
       this._buttonLike.classList.toggle('card__like-button_active');
     };
-    _deleteCard() {
+    deleteCard() {
       this._cardContainer.remove();
       this._card = null;
-    };
-    _confirmButtonListener() {
-      document.querySelector('.popup__confirm-button').addEventListener('click', () => {
-        this._deleteCard();
-        this._handleClosePopupWithConfirmButton();
-      });
     };
 };

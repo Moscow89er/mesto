@@ -69,7 +69,8 @@ export default class Api {
             headers: this._headers,
             body: JSON.stringify({
                 name: data.cardname,
-                link: data.cardlink
+                link: data.cardlink,
+                cardId: data._id
             })
         })
         .then(res => {
@@ -80,6 +81,18 @@ export default class Api {
         });
     };
 
+    deleteCard (cardId) {
+        return fetch (this._url + `/cards/${cardId}`, {
+            method: 'DELETE',
+            headers: this._headers
+        })
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+        return Promise.reject(`Ошибка: ${res.status}`);
+        });
+    }
 
     getData() {
         return Promise.all([this.getInitialCards(), this.getUserInfo()]);
