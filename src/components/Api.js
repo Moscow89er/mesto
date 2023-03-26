@@ -13,7 +13,7 @@ export default class Api {
             if (res.ok) {
                 return res.json();
             }
-        return Promise.reject(`Ошибка: ${res.status}`);
+            return Promise.reject(`Ошибка: ${res.status}`);
         });
     };
 
@@ -26,7 +26,7 @@ export default class Api {
             if (res.ok) {
                 return res.json();
             }
-        return Promise.reject(`Ошибка: ${res.status}`);
+            return Promise.reject(`Ошибка: ${res.status}`);
         });
     };
     
@@ -43,7 +43,7 @@ export default class Api {
             if (res.ok) {
                 return res.json();
             }
-        return Promise.reject(`Ошибка: ${res.status}`);
+            return Promise.reject(`Ошибка: ${res.status}`);
         });
     };
 
@@ -59,7 +59,7 @@ export default class Api {
             if (res.ok) {
                 return res.json();
             }
-        return Promise.reject(`Ошибка: ${res.status}`);
+            return Promise.reject(`Ошибка: ${res.status}`);
         });
     };
 
@@ -77,7 +77,7 @@ export default class Api {
             if (res.ok) {
                 return res.json();
             }
-        return Promise.reject(`Ошибка: ${res.status}`);
+            return Promise.reject(`Ошибка: ${res.status}`);
         });
     };
 
@@ -90,7 +90,33 @@ export default class Api {
             if (res.ok) {
                 return res.json();
             }
-        return Promise.reject(`Ошибка: ${res.status}`);
+            return Promise.reject(`Ошибка: ${res.status}`);
+        });
+    }
+
+    likeCard (userId) {
+        return fetch (this._url + `/cards/${userId}/likes`, {
+            method: 'PUT',
+            headers: this._headers
+        })
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
+        });
+    }
+
+    dislikeCard (userId) {
+        return fetch (this._url + `/cards/${userId}/likes`, {
+            method: 'DELETE',
+            headers: this._headers
+        })
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
         });
     }
 

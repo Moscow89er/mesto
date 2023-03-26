@@ -48,7 +48,6 @@ const cardList = new Section ({
 const popupAddCard = new PopupWithForm ({
   popupSelector: popupAddFormSelector,
   handleFormSubmit: (newData) => {
-    console.log(newData);
     api.addNewCard(newData)
     .then((data) =>{
       cardList.addItem(createCard(data));
@@ -91,18 +90,20 @@ const createCard = (data) => {
       popupWithImage.open(name, link);
     },
     handleLikeClick: () => {
-      
+      card.likeCard();
     },
     handleDeleteIconClick: () => {
+      const buttonConfirmDeleteCard = document.querySelector('.popup__confirm-button');
       api.deleteCard(data._id)
         .then(() => {
           popupWithConfirmButton.open();
         })
         .then(() => {
-          document.querySelector('.popup__confirm-button').addEventListener('click', () => {
+          buttonConfirmDeleteCard.addEventListener('click', () => {
             card.deleteCard();
             popupWithConfirmButton.close();
-        });
+        })
+        .catch((err) => console.log(err));
       })
     },
     handleClosePopupWithConfirmButton: () => {
