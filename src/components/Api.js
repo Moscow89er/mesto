@@ -63,15 +63,15 @@ export default class Api {
         })
         .then(this._checkResponse);
     };
-    likeCard(userId) {
-        return fetch (this._url + `/cards/${userId}/likes`, {
+    likeCard(cardId) {
+        return fetch (this._url + `/cards/${cardId}/likes`, {
             method: 'PUT',
             headers: this._headers
         })
         .then(this._checkResponse);
     };
-    dislikeCard(userId) {
-        return fetch (this._url + `/cards/${userId}/likes`, {
+    dislikeCard(cardId) {
+        return fetch (this._url + `/cards/${cardId}/likes`, {
             method: 'DELETE',
             headers: this._headers
         })

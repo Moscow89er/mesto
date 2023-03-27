@@ -19,8 +19,6 @@ const buttonOpenPopupWithAvatar = document.querySelector('.profile__avatar-butto
 const cardsContainerSelector = '.cards';
 const popupWithConfirmButtonSelector = '.popup_confirm';
 const popupWithAvatarSelector = '.popup_update_avatar';
-const profileAvatarLink = document.querySelector('.profile__avatar');
-const inputTypeAvatarLink = document.querySelector('.popup__input_type_avatarlink');
 let userId;
 const api = new Api ({
   url: 'https://mesto.nomoreparties.co/v1/cohort-62',
@@ -95,27 +93,42 @@ const createCard = (data) => {
     handleCardClick: (name, link) => {
       popupWithImage.open(name, link);
     },
-    handleLikeClick: () => {
-      card.likeCard();
-    },
-    handleDeleteIconClick: () => {
-      const buttonConfirmDeleteCard = document.querySelector('.popup__confirm-button');
-      api.deleteCard(data._id)
-        .then(() => {
-          popupWithConfirmButton.open();
-        })
-        .then(() => {
-          buttonConfirmDeleteCard.addEventListener('click', () => {
-            card.deleteCard();
-            popupWithConfirmButton.close();
+    handleLikeClick: (evt) => {
+      if (!(evt.target.classList.contains('card__like-button_active'))) {
+        api.likeCard(data._id)
+        .then((data) => {
+          evt.target.classList.add('card__like-button_active');
+          evt.target.closest('.card__like-group').querySelector('.card__likes-number').textContent = data.likes.length;
         })
         .catch((err) => console.log(err));
-      })
+      } else {
+        api.dislikeCard(data._id)
+        .then((data) => {
+          evt.target.classList.remove('card__like-button_active');
+          evt.target.closest('.card__like-group').querySelector('.card__likes-number').textContent = data.likes.length;
+        })
+        .catch((err) => console.log(err));
+      }
+    },
+    handleDeleteIconClick: () => {
+      popupWithConfirmButton.open();
+      popupWithConfirmButton.setSubmitAction(() => {
+        popupWithConfirmButton.renderLoading(true);
+        api.deleteCard(data._id)
+        .then(() => {
+          card.deleteCard();
+          popupWithConfirmButton.close();
+        })
+        .catch((err) => console.log(err))
+        .finally(() => {
+          popupWithConfirmButton.renderLoading(false);
+        });
+      });
     },
     handleClosePopupWithConfirmButton: () => {
       popupWithConfirmButton.close();
     }
-  }, api, userId, '.card_type_default');
+  }, userId, '.card_type_default');
   return card.generateCard();
 };
 const openEditProfilePopup = () => {
@@ -130,7 +143,6 @@ const openAddCardForm = () => {
   popupAddCard.open();
 };
 const openEditAvatarPopup = () => {
-  inputTypeAvatarLink.value = profileAvatarLink.src;
   formAvatarValidator.clearInputErrors();
   popupWithAvatar.open();
 };
